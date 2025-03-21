@@ -24,8 +24,8 @@ def get_models_path():
 
 def get_raw_data_path():
     raw_path = os.path.join(get_data_path(), 'raw')
-    if not os.path.exists(raw_path):
-        os.makedirs(raw_path)
+    # Force creation of raw directory
+    os.makedirs(raw_path, exist_ok=True)
     return raw_path
 
 def get_processed_data_path():
@@ -52,10 +52,11 @@ def ensure_dir(file_path):
         os.makedirs(directory)
 
 if __name__ == "__main__":
-    # Create all directories on import
-    get_data_path()
-    get_models_path()
-    get_raw_data_path()
-    get_processed_data_path()
-    get_figures_path()
-    get_logs_path()
+    print("Creating directories...")
+    print(f"Raw data path: {get_raw_data_path()}")
+    print(f"Data path: {get_data_path()}")
+    print(f"Models path: {get_models_path()}")
+    print(f"Processed path: {get_processed_data_path()}")
+    print(f"Figures path: {get_figures_path()}")
+    print(f"Logs path: {get_logs_path()}")
+    print("Done!")

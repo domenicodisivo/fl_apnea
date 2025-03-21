@@ -4,6 +4,8 @@ from tensorflow.keras import layers, models
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 from sklearn.metrics import confusion_matrix, classification_report
+from config import get_models_path
+import os
 
 def plot_training_history(history):
     plt.figure(figsize=(15, 5))
@@ -109,4 +111,6 @@ if __name__ == "__main__":
     plot_training_history(history)
     
     print("\nSalvataggio modello...")
-    model.save('bcg_apnea_model.h5')
+    model_path = os.path.join(get_models_path(), 'bcg_apnea_model.h5')
+    model.save(model_path)
+    print(f"Modello salvato in: {model_path}")

@@ -8,12 +8,12 @@ from config import get_raw_data_path, get_figures_path
 import os
 
 def carica_dati(percorso_file):
-    df = pd.read_csv(percorso_file)
-    segnali_bcg = df.iloc[:, 1:13]
-    segnale_ecg = df.iloc[:, -1]
+    dati = pd.read_csv(percorso_file)
+    segnali_bcg = dati.iloc[:, 1:13]
+    segnale_ecg = dati.iloc[:, -1]
     return segnali_bcg, segnale_ecg
 
-def sigmoid(x):
+def funzione_sigmoide(x):
     return 1 / (1 + np.exp(-x))
 
 def calcola_probabilita_apnea(segnale_ecg, frequenza_campionamento=1000):
@@ -21,17 +21,17 @@ def calcola_probabilita_apnea(segnale_ecg, frequenza_campionamento=1000):
     intervalli_rr_secondi = np.diff(picchi) / frequenza_campionamento
     
     media_rr = np.mean(intervalli_rr_secondi)
-    std_rr = np.std(intervalli_rr_secondi)
-    z_scores_rr = (intervalli_rr_secondi - media_rr) / std_rr
+    deviazione_standard_rr = np.std(intervalli_rr_secondi)
+    punteggi_z_rr = (intervalli_rr_secondi - media_rr) / deviazione_standard_rr
     
-    probabilita_apnea_rr = sigmoid(z_scores_rr)
+    probabilita_apnea_rr = funzione_sigmoide(punteggi_z_rr)
     
     tempi_picchi = picchi[:-1] / frequenza_campionamento
-    funzione_interp = interp1d(tempi_picchi, probabilita_apnea_rr, kind='linear', 
+    funzione_interpolazione = interp1d(tempi_picchi, probabilita_apnea_rr, kind='linear', 
                           fill_value="extrapolate")
     
     tempo = np.arange(len(segnale_ecg)) / frequenza_campionamento
-    probabilita = funzione_interp(tempo)
+    probabilita = funzione_interpolazione(tempo)
     
     return probabilita, tempo
 
@@ -86,7 +86,7 @@ def visualizza_analisi(segnali_bcg, probabilita, maschera_apnea, maschera_movime
                     where=maschera_movimento, color='blue', alpha=0.3,
                     label='Movimento')
     
-    plt.xlabel('Tempo (s)')
+    plt.xlabel('Tempo (secondi)')
     plt.ylabel('Probabilità Apnea')
     plt.title('Analisi della Probabilità di Apnea con Periodi di Apnea e Movimento')
     plt.ylim(0, 1)

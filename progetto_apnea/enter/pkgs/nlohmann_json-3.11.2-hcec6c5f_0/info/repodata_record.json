@@ -1,0 +1,20 @@
+{
+  "arch": "x86_64",
+  "build": "hcec6c5f_0",
+  "build_number": 0,
+  "channel": "https://repo.anaconda.com/pkgs/main/",
+  "constrains": [],
+  "depends": [],
+  "fn": "nlohmann_json-3.11.2-hcec6c5f_0.conda",
+  "license": "MIT",
+  "license_family": "MIT",
+  "md5": "db1d89ad80df127978e96dd7936ce89f",
+  "name": "nlohmann_json",
+  "platform": "darwin",
+  "sha256": "d0f7e0b902fffcea92237ed7a6587887723d46ae504eacff387c522f298e0e5d",
+  "size": 128569,
+  "subdir": "osx-64",
+  "timestamp": 1680082153000,
+  "url": "https://repo.anaconda.com/pkgs/main/osx-64/nlohmann_json-3.11.2-hcec6c5f_0.conda",
+  "version": "3.11.2"
+}

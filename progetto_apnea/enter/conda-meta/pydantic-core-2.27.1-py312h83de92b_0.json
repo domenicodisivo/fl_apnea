@@ -1,0 +1,52 @@
+{
+  "arch": "x86_64",
+  "build": "py312h83de92b_0",
+  "build_number": 0,
+  "channel": "https://repo.anaconda.com/pkgs/main",
+  "constrains": [
+    "__osx >=10.12"
+  ],
+  "depends": [
+    "python >=3.12,<3.13.0a0",
+    "typing-extensions >=4.6.0,!=4.7.0"
+  ],
+  "extracted_package_dir": "/Users/domenicodisivo/Documents/apps/fl_apnea/progetto_apnea/enter/pkgs/pydantic-core-2.27.1-py312h83de92b_0",
+  "files": [
+    "lib/python3.12/site-packages/pydantic_core-2.27.1.dist-info/INSTALLER",
+    "lib/python3.12/site-packages/pydantic_core-2.27.1.dist-info/METADATA",
+    "lib/python3.12/site-packages/pydantic_core-2.27.1.dist-info/RECORD",
+    "lib/python3.12/site-packages/pydantic_core-2.27.1.dist-info/REQUESTED",
+    "lib/python3.12/site-packages/pydantic_core-2.27.1.dist-info/WHEEL",
+    "lib/python3.12/site-packages/pydantic_core-2.27.1.dist-info/direct_url.json",
+    "lib/python3.12/site-packages/pydantic_core-2.27.1.dist-info/license_files/LICENSE",
+    "lib/python3.12/site-packages/pydantic_core/__init__.py",
+    "lib/python3.12/site-packages/pydantic_core/__pycache__/__init__.cpython-312.pyc",
+    "lib/python3.12/site-packages/pydantic_core/__pycache__/core_schema.cpython-312.pyc",
+    "lib/python3.12/site-packages/pydantic_core/_pydantic_core.cpython-312-darwin.so",
+    "lib/python3.12/site-packages/pydantic_core/_pydantic_core.pyi",
+    "lib/python3.12/site-packages/pydantic_core/core_schema.py",
+    "lib/python3.12/site-packages/pydantic_core/py.typed"
+  ],
+  "fn": "pydantic-core-2.27.1-py312h83de92b_0.conda",
+  "license": "MIT",
+  "license_family": "MIT",
+  "link": {
+    "source": "/Users/domenicodisivo/Documents/apps/fl_apnea/progetto_apnea/enter/pkgs/pydantic-core-2.27.1-py312h83de92b_0",
+    "type": 1
+  },
+  "md5": "7b4dc363c9a94af8ce3371f83f250b42",
+  "name": "pydantic-core",
+  "package_tarball_full_path": "/Users/domenicodisivo/Documents/apps/fl_apnea/progetto_apnea/enter/pkgs/pydantic-core-2.27.1-py312h83de92b_0.conda",
+  "paths_data": {
+    "paths": [],
+    "paths_version": 1
+  },
+  "platform": "darwin",
+  "requested_spec": "defaults/osx-64::pydantic-core==2.27.1=py312h83de92b_0[md5=7b4dc363c9a94af8ce3371f83f250b42]",
+  "sha256": "317b516b328af54379f95c8be70ebded794fae2a95bb17a9d8c523c8f570e029",
+  "size": 1749690,
+  "subdir": "osx-64",
+  "timestamp": 1734726806000,
+  "url": "https://repo.anaconda.com/pkgs/main/osx-64/pydantic-core-2.27.1-py312h83de92b_0.conda",
+  "version": "2.27.1"
+}

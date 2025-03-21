@@ -1,0 +1,13 @@
+prefix=/Users/domenicodisivo/Documents/apps/fl_apnea/progetto_apnea/enter
+exec_prefix=/Users/domenicodisivo/Documents/apps/fl_apnea/progetto_apnea/enter
+libdir=/Users/domenicodisivo/Documents/apps/fl_apnea/progetto_apnea/enter/lib
+sharedlibdir=/Users/domenicodisivo/Documents/apps/fl_apnea/progetto_apnea/enter/lib
+includedir=/Users/domenicodisivo/Documents/apps/fl_apnea/progetto_apnea/enter/include
+
+Name: zlib
+Description: zlib compression library
+Version: 1.2.13
+
+Requires:
+Libs: -L${libdir} -L${sharedlibdir} -lz
+Cflags: -I${includedir}

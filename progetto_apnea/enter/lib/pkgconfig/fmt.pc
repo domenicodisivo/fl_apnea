@@ -1,0 +1,11 @@
+prefix=/Users/domenicodisivo/Documents/apps/fl_apnea/progetto_apnea/enter
+exec_prefix=/Users/domenicodisivo/Documents/apps/fl_apnea/progetto_apnea/enter
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: fmt
+Description: A modern formatting library
+Version: 9.1.0
+Libs: -L${libdir} -lfmt
+Cflags: -I${includedir}
+

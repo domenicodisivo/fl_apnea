@@ -1,0 +1,16 @@
+{
+  "arch": "x86_64",
+  "build": "py312hecd8cb5_1",
+  "build_number": 1,
+  "depends": [
+    "mdurl >=0.1,<1",
+    "python >=3.12,<3.13.0a0"
+  ],
+  "license": "MIT",
+  "license_family": "MIT",
+  "name": "markdown-it-py",
+  "platform": "osx",
+  "subdir": "osx-64",
+  "timestamp": 1699239927235,
+  "version": "2.2.0"
+}

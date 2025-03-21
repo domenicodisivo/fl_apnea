@@ -1,0 +1,54 @@
+{
+  "arch": "x86_64",
+  "build": "h1962661_0",
+  "build_number": 0,
+  "channel": "https://repo.anaconda.com/pkgs/main",
+  "constrains": [],
+  "depends": [
+    "libcxx >=14.0.6"
+  ],
+  "extracted_package_dir": "/Users/domenicodisivo/Documents/apps/fl_apnea/progetto_apnea/enter/pkgs/simdjson-3.10.1-h1962661_0",
+  "files": [
+    "include/simdjson.h",
+    "lib/cmake/simdjson/simdjson-config-version.cmake",
+    "lib/cmake/simdjson/simdjson-config.cmake",
+    "lib/cmake/simdjson/simdjsonTargets-release.cmake",
+    "lib/cmake/simdjson/simdjsonTargets.cmake",
+    "lib/libsimdjson.23.0.0.dylib",
+    "lib/libsimdjson.23.dylib",
+    "lib/libsimdjson.dylib",
+    "lib/pkgconfig/simdjson.pc"
+  ],
+  "fn": "simdjson-3.10.1-h1962661_0.conda",
+  "license": "Apache-2.0",
+  "license_family": "Apache",
+  "link": {
+    "source": "/Users/domenicodisivo/Documents/apps/fl_apnea/progetto_apnea/enter/pkgs/simdjson-3.10.1-h1962661_0",
+    "type": 1
+  },
+  "md5": "8bd645e5d0e237130638566110da6d9d",
+  "name": "simdjson",
+  "package_tarball_full_path": "/Users/domenicodisivo/Documents/apps/fl_apnea/progetto_apnea/enter/pkgs/simdjson-3.10.1-h1962661_0.conda",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "lib/pkgconfig/simdjson.pc",
+        "file_mode": "text",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_4f5rt7i0zl/croot/simdjson-split_1734048067490/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold",
+        "sha256": "c3a4b1b8336a6b555fe4fb23fe1fa28fd955b1d1300a9c0d13270a3d9825c710",
+        "sha256_in_prefix": "88fd89c74865cbf597d7e1b703afa08ddfafa3299ee03376d47b8c3d97a8959d",
+        "size_in_bytes": 505
+      }
+    ],
+    "paths_version": 1
+  },
+  "platform": "darwin",
+  "requested_spec": "defaults/osx-64::simdjson==3.10.1=h1962661_0[md5=8bd645e5d0e237130638566110da6d9d]",
+  "sha256": "4720023d1330b82cfc68b561ad4575719cf43e458178923734cf77153b57296f",
+  "size": 251225,
+  "subdir": "osx-64",
+  "timestamp": 1734048249000,
+  "url": "https://repo.anaconda.com/pkgs/main/osx-64/simdjson-3.10.1-h1962661_0.conda",
+  "version": "3.10.1"
+}

@@ -1,0 +1,22 @@
+{
+  "arch": "x86_64",
+  "build": "py312hecd8cb5_0",
+  "build_number": 0,
+  "channel": "https://repo.anaconda.com/pkgs/main/",
+  "constrains": [],
+  "depends": [
+    "python >=3.12,<3.13.0a0"
+  ],
+  "fn": "setuptools-75.8.0-py312hecd8cb5_0.conda",
+  "license": "MIT",
+  "license_family": "MIT",
+  "md5": "23bf9c15a65f2950af1716724c4e5396",
+  "name": "setuptools",
+  "platform": "darwin",
+  "sha256": "5a9822f29fdca42e74953fbf7da5a4ce17bfa94310c348b52d569c619ade037a",
+  "size": 2270585,
+  "subdir": "osx-64",
+  "timestamp": 1738046071000,
+  "url": "https://repo.anaconda.com/pkgs/main/osx-64/setuptools-75.8.0-py312hecd8cb5_0.conda",
+  "version": "75.8.0"
+}

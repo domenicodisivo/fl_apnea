@@ -1,0 +1,73 @@
+# This file created by conda-build 24.9.0
+# ------------------------------------------------
+
+package:
+  name: typing-extensions
+  version: 4.12.2
+source:
+  sha256: 1a7ead55c7e559dd4dee8856e3a88b41225abfe1ce8df57b7c13915fe121ffb8
+  url: https://pypi.io/packages/source/t/typing_extensions/typing_extensions-4.12.2.tar.gz
+build:
+  number: 0
+  string: py312hecd8cb5_0
+requirements:
+  host:
+    - bzip2 1.0.8 h6c40b1e_6
+    - ca-certificates 2024.11.26 hecd8cb5_0
+    - expat 2.6.4 h6d0c2b6_0
+    - libcxx 14.0.6 h9765a3e_0
+    - libffi 3.4.4 hecd8cb5_1
+    - ncurses 6.4 hcec6c5f_0
+    - openssl 3.0.15 h46256e1_0
+    - python 3.12.8 hcd54a6c_0
+    - readline 8.2 hca72f7f_0
+    - sqlite 3.45.3 h6c40b1e_0
+    - tk 8.6.14 h4d00af3_0
+    - tzdata 2024b h04d1e81_0
+    - xz 5.4.6 h6c40b1e_1
+    - zlib 1.2.13 h4b97444_1
+  run:
+    - python >=3.12,<3.13.0a0
+    - typing_extensions 4.12.2 py312hecd8cb5_0
+test:
+  commands:
+    - pip check
+  imports:
+    - typing_extensions
+  requires:
+    - pip
+about:
+  description: 'The typing module was added to the standard library in Python 3.5,
+    but
+
+    many new features have been added to the module since then.
+
+    This means users of older Python versions who are unable to upgrade will not be
+
+    able to take advantage of new types added to the typing module, such as
+
+    typing.Protocol or typing.TypedDict.
+
+
+    The typing_extensions module contains backports of these changes.
+
+    Experimental types that will eventually be added to the ``typing``
+
+    module are also included in typing_extensions.
+
+    '
+  dev_url: https://github.com/python/typing_extensions
+  doc_url: https://github.com/python/typing_extensions/blob/main/README.md
+  home: https://github.com/python/typing_extensions
+  license: PSF-2.0
+  license_family: PSF
+  license_file: LICENSE
+  summary: Backported and Experimental Type Hints for Python
+extra:
+  copy_test_source_files: true
+  final: true
+  flow_run_id: 6d81140b-3ee2-4906-8624-7cf0baa03ece
+  recipe-maintainers:
+    - cbouss
+  remote_url: git@github.com:AnacondaRecipes/typing_extensions-feedstock.git
+  sha: 4ede6c5c83e4533a845b82aead578ce6cb441ddc

@@ -1,0 +1,22 @@
+{
+  "arch": "x86_64",
+  "build": "py312h46256e1_2",
+  "build_number": 2,
+  "channel": "https://repo.anaconda.com/pkgs/main/",
+  "constrains": [],
+  "depends": [
+    "python >=3.12,<3.13.0a0"
+  ],
+  "fn": "pycosat-0.6.6-py312h46256e1_2.conda",
+  "license": "MIT",
+  "license_family": "MIT",
+  "md5": "8995da68e40b1b7097224630d9d125a4",
+  "name": "pycosat",
+  "platform": "darwin",
+  "sha256": "7d4edef73a582b24cec3b505a3494cede0887655fca7613f1eca49812ec5c02f",
+  "size": 94667,
+  "subdir": "osx-64",
+  "timestamp": 1736868886000,
+  "url": "https://repo.anaconda.com/pkgs/main/osx-64/pycosat-0.6.6-py312h46256e1_2.conda",
+  "version": "0.6.6"
+}

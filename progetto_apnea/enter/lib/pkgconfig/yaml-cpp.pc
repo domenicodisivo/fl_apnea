@@ -1,0 +1,11 @@
+prefix=/Users/domenicodisivo/Documents/apps/fl_apnea/progetto_apnea/enter
+exec_prefix=${prefix}
+includedir=/Users/domenicodisivo/Documents/apps/fl_apnea/progetto_apnea/enter/include
+libdir=/Users/domenicodisivo/Documents/apps/fl_apnea/progetto_apnea/enter/lib
+
+Name: Yaml-cpp
+Description: A YAML parser and emitter for C++
+Version: 0.8.0
+Requires:
+Libs: -L${libdir} -lyaml-cpp
+Cflags: -I${includedir}

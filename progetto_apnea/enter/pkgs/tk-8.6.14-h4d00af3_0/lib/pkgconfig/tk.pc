@@ -1,0 +1,15 @@
+# tk pkg-config source file
+
+prefix=/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_5efi11_j83/croot/tk_1714770578518/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_p
+exec_prefix=/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_5efi11_j83/croot/tk_1714770578518/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_p
+libdir=/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_5efi11_j83/croot/tk_1714770578518/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_p/lib
+includedir=${prefix}/include
+
+Name: The Tk Toolkit
+Description: Tk is a cross-platform graphical user interface toolkit, the standard GUI not only for Tcl, but for many other dynamic languages as well.
+URL: https://www.tcl-lang.org/
+Version: 8.6.14
+Requires: tcl >= 8.6
+Libs: -L${libdir} -ltk8.6 -ltkstub8.6
+Libs.private:  
+Cflags: -I${includedir}

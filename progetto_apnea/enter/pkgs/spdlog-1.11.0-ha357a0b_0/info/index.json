@@ -1,0 +1,16 @@
+{
+  "arch": "x86_64",
+  "build": "ha357a0b_0",
+  "build_number": 0,
+  "depends": [
+    "fmt >=9.1.0,<10.0a0",
+    "libcxx >=14.0.6"
+  ],
+  "license": "MIT",
+  "license_family": "MIT",
+  "name": "spdlog",
+  "platform": "osx",
+  "subdir": "osx-64",
+  "timestamp": 1676361496421,
+  "version": "1.11.0"
+}

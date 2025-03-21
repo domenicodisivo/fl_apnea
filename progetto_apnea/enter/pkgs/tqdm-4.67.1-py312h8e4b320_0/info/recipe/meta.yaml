@@ -1,0 +1,85 @@
+# This file created by conda-build 24.5.1
+# meta.yaml template originally from:
+# /var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_b8a_tjze9j/clone/recipe, last modified Fri Feb  7 10:34:05 2025
+# ------------------------------------------------
+
+package:
+  name: tqdm
+  version: 4.67.1
+source:
+  sha256: f8aef9c52c08c13a65f30ea34f4e5aac3fd1a34959879d7e59e63027286627f2
+  url: https://pypi.io/packages/source/t/tqdm/tqdm-4.67.1.tar.gz
+build:
+  entry_points:
+    - tqdm = tqdm.cli:main
+  number: '0'
+  script: /var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_b8a_tjze9j/croot/tqdm_1738946058169/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold/bin/python
+    -m pip install . --no-deps --no-build-isolation -vv
+  string: py312h8e4b320_0
+requirements:
+  host:
+    - bzip2 1.0.8 h6c40b1e_6
+    - ca-certificates 2024.12.31 hecd8cb5_0
+    - expat 2.6.4 h6d0c2b6_0
+    - libcxx 14.0.6 h9765a3e_0
+    - libffi 3.4.4 hecd8cb5_1
+    - ncurses 6.4 hcec6c5f_0
+    - openssl 3.0.15 h46256e1_0
+    - packaging 24.2 py312hecd8cb5_0
+    - pip 25.0 py312hecd8cb5_0
+    - python 3.12.9 hcd54a6c_0
+    - readline 8.2 hca72f7f_0
+    - setuptools 75.8.0 py312hecd8cb5_0
+    - setuptools-scm 8.1.0 py312hecd8cb5_0
+    - setuptools_scm 8.1.0 hd3eb1b0_0
+    - sqlite 3.45.3 h6c40b1e_0
+    - tk 8.6.14 h4d00af3_0
+    - toml 0.10.2 pyhd3eb1b0_0
+    - tzdata 2025a h04d1e81_0
+    - wheel 0.45.1 py312hecd8cb5_0
+    - xz 5.4.6 h6c40b1e_1
+    - zlib 1.2.13 h4b97444_1
+  run:
+    - python >=3.12,<3.13.0a0
+  run_constrained:
+    - ipywidgets >=6
+test:
+  commands:
+    - pip check
+    - tqdm --help
+    - tqdm -v | rg 4.67.1
+    - pytest -k "not tests_perf"
+  imports:
+    - tqdm
+  requires:
+    - dask-core
+    - numpy
+    - pandas
+    - pip
+    - pytest >=6
+    - pytest-asyncio >=0.24
+    - pytest-timeout
+    - pytest-xdist
+    - rich
+    - ripgrep
+  source_files:
+    - pyproject.toml
+    - tests
+about:
+  description: A Fast, Extensible Progress Bar for Python and CLI
+  dev_url: https://github.com/tqdm/tqdm
+  doc_url: https://tqdm.github.io/
+  home: https://tqdm.github.io/
+  license: MPL-2.0 AND MIT
+  license_family: MOZILLA
+  license_file: LICENCE
+  summary: A Fast, Extensible Progress Meter
+extra:
+  copy_test_source_files: true
+  final: true
+  flow_run_id: b8b787c5-b3be-40d4-aecf-072b8c0e46e1
+  recipe-maintainers:
+    - casperdcl
+    - pmlandwehr
+  remote_url: git@github.com:AnacondaRecipes/tqdm-feedstock.git
+  sha: 94cf0819d934b0cb8c4149ff64bbbbaad80b9ea0

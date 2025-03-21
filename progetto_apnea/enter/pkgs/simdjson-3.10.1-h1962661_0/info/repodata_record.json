@@ -1,0 +1,22 @@
+{
+  "arch": "x86_64",
+  "build": "h1962661_0",
+  "build_number": 0,
+  "channel": "https://repo.anaconda.com/pkgs/main/",
+  "constrains": [],
+  "depends": [
+    "libcxx >=14.0.6"
+  ],
+  "fn": "simdjson-3.10.1-h1962661_0.conda",
+  "license": "Apache-2.0",
+  "license_family": "Apache",
+  "md5": "8bd645e5d0e237130638566110da6d9d",
+  "name": "simdjson",
+  "platform": "darwin",
+  "sha256": "4720023d1330b82cfc68b561ad4575719cf43e458178923734cf77153b57296f",
+  "size": 251225,
+  "subdir": "osx-64",
+  "timestamp": 1734048249000,
+  "url": "https://repo.anaconda.com/pkgs/main/osx-64/simdjson-3.10.1-h1962661_0.conda",
+  "version": "3.10.1"
+}

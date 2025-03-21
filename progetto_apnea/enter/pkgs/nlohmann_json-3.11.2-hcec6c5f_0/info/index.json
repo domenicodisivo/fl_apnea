@@ -1,0 +1,13 @@
+{
+  "arch": "x86_64",
+  "build": "hcec6c5f_0",
+  "build_number": 0,
+  "depends": [],
+  "license": "MIT",
+  "license_family": "MIT",
+  "name": "nlohmann_json",
+  "platform": "osx",
+  "subdir": "osx-64",
+  "timestamp": 1680082153047,
+  "version": "3.11.2"
+}

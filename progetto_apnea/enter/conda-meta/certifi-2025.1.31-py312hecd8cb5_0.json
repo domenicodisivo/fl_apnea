@@ -1,0 +1,51 @@
+{
+  "arch": "x86_64",
+  "build": "py312hecd8cb5_0",
+  "build_number": 0,
+  "channel": "https://repo.anaconda.com/pkgs/main",
+  "constrains": [],
+  "depends": [
+    "python >=3.12,<3.13.0a0"
+  ],
+  "extracted_package_dir": "/Users/domenicodisivo/Documents/apps/fl_apnea/progetto_apnea/enter/pkgs/certifi-2025.1.31-py312hecd8cb5_0",
+  "files": [
+    "lib/python3.12/site-packages/certifi-2025.1.31.dist-info/INSTALLER",
+    "lib/python3.12/site-packages/certifi-2025.1.31.dist-info/LICENSE",
+    "lib/python3.12/site-packages/certifi-2025.1.31.dist-info/METADATA",
+    "lib/python3.12/site-packages/certifi-2025.1.31.dist-info/RECORD",
+    "lib/python3.12/site-packages/certifi-2025.1.31.dist-info/REQUESTED",
+    "lib/python3.12/site-packages/certifi-2025.1.31.dist-info/WHEEL",
+    "lib/python3.12/site-packages/certifi-2025.1.31.dist-info/direct_url.json",
+    "lib/python3.12/site-packages/certifi-2025.1.31.dist-info/top_level.txt",
+    "lib/python3.12/site-packages/certifi/__init__.py",
+    "lib/python3.12/site-packages/certifi/__main__.py",
+    "lib/python3.12/site-packages/certifi/__pycache__/__init__.cpython-312.pyc",
+    "lib/python3.12/site-packages/certifi/__pycache__/__main__.cpython-312.pyc",
+    "lib/python3.12/site-packages/certifi/__pycache__/core.cpython-312.pyc",
+    "lib/python3.12/site-packages/certifi/cacert.pem",
+    "lib/python3.12/site-packages/certifi/core.py",
+    "lib/python3.12/site-packages/certifi/py.typed"
+  ],
+  "fn": "certifi-2025.1.31-py312hecd8cb5_0.conda",
+  "license": "MPL-2.0",
+  "license_family": "Other",
+  "link": {
+    "source": "/Users/domenicodisivo/Documents/apps/fl_apnea/progetto_apnea/enter/pkgs/certifi-2025.1.31-py312hecd8cb5_0",
+    "type": 1
+  },
+  "md5": "6ff2bb46e3e981d1e8b1e21b7d44ebcc",
+  "name": "certifi",
+  "package_tarball_full_path": "/Users/domenicodisivo/Documents/apps/fl_apnea/progetto_apnea/enter/pkgs/certifi-2025.1.31-py312hecd8cb5_0.conda",
+  "paths_data": {
+    "paths": [],
+    "paths_version": 1
+  },
+  "platform": "darwin",
+  "requested_spec": "defaults/osx-64::certifi==2025.1.31=py312hecd8cb5_0[md5=6ff2bb46e3e981d1e8b1e21b7d44ebcc]",
+  "sha256": "fd36ebc1a2ae4c370ea1cf0c4caa7ceb221bc2fa0d3b34fb76a5a239518756c6",
+  "size": 167861,
+  "subdir": "osx-64",
+  "timestamp": 1738623821000,
+  "url": "https://repo.anaconda.com/pkgs/main/osx-64/certifi-2025.1.31-py312hecd8cb5_0.conda",
+  "version": "2025.1.31"
+}

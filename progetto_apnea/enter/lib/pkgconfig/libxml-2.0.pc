@@ -1,0 +1,13 @@
+prefix=/Users/domenicodisivo/Documents/apps/fl_apnea/progetto_apnea/enter
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+modules=1
+
+Name: libXML
+Version: 2.13.5
+Description: libXML library version2.
+Requires.private:  icu-i18n
+Libs: -L${libdir} -lxml2 
+Libs.private:  -L/Users/domenicodisivo/Documents/apps/fl_apnea/progetto_apnea/enter/lib -lz -L/Users/domenicodisivo/Documents/apps/fl_apnea/progetto_apnea/enter/lib -llzma  -L/Users/domenicodisivo/Documents/apps/fl_apnea/progetto_apnea/enter/lib -liconv    
+Cflags: -I${includedir}/libxml2 -I/Users/domenicodisivo/Documents/apps/fl_apnea/progetto_apnea/enter/include 

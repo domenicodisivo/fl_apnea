@@ -1,0 +1,107 @@
+{
+  "paths": [
+    {
+      "_path": "bin/curl-config",
+      "file_mode": "text",
+      "path_type": "hardlink",
+      "prefix_placeholder": "/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_dcfb7w0yf3/croot/curl_split_recipe_1734542036911/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeh",
+      "sha256": "2d1cd1b08b08e5d99cc39b8391dbec41fb7fe5dfa8e0dbe9759287ba3f5d4a7b",
+      "size_in_bytes": 11875
+    },
+    {
+      "_path": "include/curl/curl.h",
+      "path_type": "hardlink",
+      "sha256": "d08414797abd8b914062f17337f7a50b48cb0007bf13f95eec510c8c63c5dd92",
+      "size_in_bytes": 130318
+    },
+    {
+      "_path": "include/curl/curlver.h",
+      "path_type": "hardlink",
+      "sha256": "1e09eeb43be79a2c06899f841ca79670d0ce4dfec25ab58f587c8b24c36a43d1",
+      "size_in_bytes": 3045
+    },
+    {
+      "_path": "include/curl/easy.h",
+      "path_type": "hardlink",
+      "sha256": "3826b9c8dd8d4ab4088a49ddf100ef2848f311ba0f3fa67d0594d26c71843ef5",
+      "size_in_bytes": 4012
+    },
+    {
+      "_path": "include/curl/header.h",
+      "path_type": "hardlink",
+      "sha256": "614be48a86f4e5d304c5aa40ef1c85245e25b97732921c3631840146669d992f",
+      "size_in_bytes": 2910
+    },
+    {
+      "_path": "include/curl/mprintf.h",
+      "path_type": "hardlink",
+      "sha256": "5254b33e5e351298cdc25303381edc15889a41e129d41821bbd186dc2ddcbd40",
+      "size_in_bytes": 3086
+    },
+    {
+      "_path": "include/curl/multi.h",
+      "path_type": "hardlink",
+      "sha256": "83ae673f7655768bf70b141c9cf845b09695aa801d4d1d56362c3928c38e397c",
+      "size_in_bytes": 18235
+    },
+    {
+      "_path": "include/curl/options.h",
+      "path_type": "hardlink",
+      "sha256": "5716018d27e783283825bed2a8a051190487722fdeb64b7aa2d03a997e99b8d1",
+      "size_in_bytes": 2401
+    },
+    {
+      "_path": "include/curl/stdcheaders.h",
+      "path_type": "hardlink",
+      "sha256": "d7588b86814a35ffc3766ff6242e6f6705e04401fc9c208a195caff3503af81c",
+      "size_in_bytes": 1362
+    },
+    {
+      "_path": "include/curl/system.h",
+      "path_type": "hardlink",
+      "sha256": "9eec4a36e131b02b793278fdf1975c50cdfa551d7d5fa8036a65c2254582530f",
+      "size_in_bytes": 18713
+    },
+    {
+      "_path": "include/curl/typecheck-gcc.h",
+      "path_type": "hardlink",
+      "sha256": "69f21b923732fe43ad282368521a92392fd36f2233464ab3a9182be295645f58",
+      "size_in_bytes": 43631
+    },
+    {
+      "_path": "include/curl/urlapi.h",
+      "path_type": "hardlink",
+      "sha256": "4366e8eead1d92742c679b14dd3c65b92087226e1cebecc7803d619eded6a868",
+      "size_in_bytes": 5802
+    },
+    {
+      "_path": "include/curl/websockets.h",
+      "path_type": "hardlink",
+      "sha256": "b58bb1d7eda3fd2372feb4d856c256897d83006dfe7933d69be54bc4a2ba5a3f",
+      "size_in_bytes": 2741
+    },
+    {
+      "_path": "lib/libcurl.4.dylib",
+      "file_mode": "binary",
+      "path_type": "hardlink",
+      "prefix_placeholder": "/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_dcfb7w0yf3/croot/curl_split_recipe_1734542036911/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeh",
+      "sha256": "c74c3b3044111f74f10417c6d7f126e16d7ca3cfa1d7334a679a2ec9fc83c198",
+      "size_in_bytes": 852168
+    },
+    {
+      "_path": "lib/libcurl.dylib",
+      "path_type": "softlink",
+      "sha256": "c74c3b3044111f74f10417c6d7f126e16d7ca3cfa1d7334a679a2ec9fc83c198",
+      "size_in_bytes": 852168
+    },
+    {
+      "_path": "lib/pkgconfig/libcurl.pc",
+      "file_mode": "text",
+      "path_type": "hardlink",
+      "prefix_placeholder": "/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_dcfb7w0yf3/croot/curl_split_recipe_1734542036911/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeh",
+      "sha256": "bc6aecc7511056383b852a2251ec4c24a827b1b33649cc99b57f885138d50876",
+      "size_in_bytes": 3515
+    }
+  ],
+  "paths_version": 1
+}

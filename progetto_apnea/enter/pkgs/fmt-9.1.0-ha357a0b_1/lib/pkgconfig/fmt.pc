@@ -1,0 +1,11 @@
+prefix=/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_8fhkjfgy_1/croot/fmt_1714483222752/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_
+exec_prefix=/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_8fhkjfgy_1/croot/fmt_1714483222752/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: fmt
+Description: A modern formatting library
+Version: 9.1.0
+Libs: -L${libdir} -lfmt
+Cflags: -I${includedir}
+

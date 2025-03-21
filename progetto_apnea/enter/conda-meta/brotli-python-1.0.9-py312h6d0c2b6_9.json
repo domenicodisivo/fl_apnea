@@ -1,0 +1,47 @@
+{
+  "arch": "x86_64",
+  "build": "py312h6d0c2b6_9",
+  "build_number": 9,
+  "channel": "https://repo.anaconda.com/pkgs/main",
+  "constrains": [],
+  "depends": [
+    "libcxx >=14.0.6",
+    "python >=3.12,<3.13.0a0"
+  ],
+  "extracted_package_dir": "/Users/domenicodisivo/Documents/apps/fl_apnea/progetto_apnea/enter/pkgs/brotli-python-1.0.9-py312h6d0c2b6_9",
+  "files": [
+    "lib/python3.12/site-packages/Brotli-1.0.9.dist-info/INSTALLER",
+    "lib/python3.12/site-packages/Brotli-1.0.9.dist-info/LICENSE",
+    "lib/python3.12/site-packages/Brotli-1.0.9.dist-info/METADATA",
+    "lib/python3.12/site-packages/Brotli-1.0.9.dist-info/RECORD",
+    "lib/python3.12/site-packages/Brotli-1.0.9.dist-info/REQUESTED",
+    "lib/python3.12/site-packages/Brotli-1.0.9.dist-info/WHEEL",
+    "lib/python3.12/site-packages/Brotli-1.0.9.dist-info/direct_url.json",
+    "lib/python3.12/site-packages/Brotli-1.0.9.dist-info/top_level.txt",
+    "lib/python3.12/site-packages/__pycache__/brotli.cpython-312.pyc",
+    "lib/python3.12/site-packages/__pycache__/brotli.cpython-313.pyc",
+    "lib/python3.12/site-packages/_brotli.cpython-312-darwin.so",
+    "lib/python3.12/site-packages/brotli.py"
+  ],
+  "fn": "brotli-python-1.0.9-py312h6d0c2b6_9.conda",
+  "license": "MIT",
+  "link": {
+    "source": "/Users/domenicodisivo/Documents/apps/fl_apnea/progetto_apnea/enter/pkgs/brotli-python-1.0.9-py312h6d0c2b6_9",
+    "type": 1
+  },
+  "md5": "425936421fe402074163ac3ffe33a060",
+  "name": "brotli-python",
+  "package_tarball_full_path": "/Users/domenicodisivo/Documents/apps/fl_apnea/progetto_apnea/enter/pkgs/brotli-python-1.0.9-py312h6d0c2b6_9.conda",
+  "paths_data": {
+    "paths": [],
+    "paths_version": 1
+  },
+  "platform": "darwin",
+  "requested_spec": "defaults/osx-64::brotli-python==1.0.9=py312h6d0c2b6_9[md5=425936421fe402074163ac3ffe33a060]",
+  "sha256": "fb0b3031d7e811d147c9a7747adadf5ad04fe8ead24fc946a6a6229883128a8e",
+  "size": 393581,
+  "subdir": "osx-64",
+  "timestamp": 1736182929000,
+  "url": "https://repo.anaconda.com/pkgs/main/osx-64/brotli-python-1.0.9-py312h6d0c2b6_9.conda",
+  "version": "1.0.9"
+}

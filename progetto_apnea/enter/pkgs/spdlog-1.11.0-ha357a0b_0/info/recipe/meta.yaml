@@ -1,0 +1,90 @@
+# This file created by conda-build 3.23.3
+# ------------------------------------------------
+
+package:
+  name: spdlog
+  version: 1.11.0
+source:
+  sha256: ca5cae8d6cac15dae0ec63b21d6ad3530070650f68076f3a4a862ca293a858bb
+  url: https://github.com/gabime/spdlog/archive/v1.11.0.tar.gz
+build:
+  number: 0
+  run_exports:
+    - spdlog >=1.11.0,<2.0a0
+  string: ha357a0b_0
+requirements:
+  build:
+    - bzip2 1.0.8 h1de35cc_0
+    - c-ares 1.18.1 hca72f7f_0
+    - ca-certificates 2023.01.10 hecd8cb5_0
+    - cctools_osx-64 949.0.1 hc7db93f_25
+    - clang 14.0.6 hecd8cb5_0
+    - clang-14 14.0.6 default_h32c6d10_0
+    - clang_osx-64 14.0.6 hb1e4b1b_0
+    - clangxx 14.0.6 default_h32c6d10_0
+    - clangxx_osx-64 14.0.6 hd8b9576_0
+    - cmake 3.22.1 hbfa4a85_0
+    - compiler-rt 14.0.6 hda8b6b8_0
+    - compiler-rt_osx-64 14.0.6 h8d5cb93_0
+    - expat 2.4.9 he9d5cce_0
+    - krb5 1.19.4 hdba6334_0
+    - ld64_osx-64 530 h70f3046_25
+    - ldid 2.1.2 h2d21305_2
+    - libclang-cpp14 14.0.6 default_h32c6d10_0
+    - libcurl 7.87.0 ha585b31_0
+    - libcxx 14.0.6 h9765a3e_0
+    - libedit 3.1.20221030 h6c40b1e_0
+    - libev 4.33 h9ed2024_1
+    - libffi 3.4.2 hecd8cb5_6
+    - libllvm14 14.0.6 h91fad77_1
+    - libnghttp2 1.46.0 ha29bfda_0
+    - libssh2 1.10.0 h0a4fc7d_0
+    - libuv 1.40.0 haf1e3a3_0
+    - llvm-tools 14.0.6 h91fad77_1
+    - lz4-c 1.9.4 hcec6c5f_0
+    - ncurses 6.4 hcec6c5f_0
+    - ninja 1.10.2 hecd8cb5_5
+    - ninja-base 1.10.2 haf03e11_5
+    - openssl 1.1.1t hca72f7f_0
+    - python 3.11.0 h1fd4e5f_2
+    - readline 8.2 hca72f7f_0
+    - rhash 1.4.1 hbcfaee0_1
+    - sqlite 3.40.1 h880c91c_0
+    - tapi 1000.10.8 ha1b3eb9_0
+    - tk 8.6.12 h5d9f67b_0
+    - tzdata 2022g h04d1e81_0
+    - xz 5.2.10 h6c40b1e_1
+    - zlib 1.2.13 h4dc903c_0
+    - zstd 1.5.2 hcb37349_0
+  host:
+    - fmt 9.1.0 ha357a0b_0
+    - libcxx 14.0.6 h9765a3e_0
+  run:
+    - fmt >=9.1.0,<10.0a0
+    - libcxx >=14.0.6
+test:
+  commands:
+    - test -e $PREFIX/include/spdlog/spdlog.h
+about:
+  description: 'spdlog is a header only library for Super fast C++ logging
+
+    to be used with a C++11 compiler.
+
+    '
+  dev_url: https://github.com/gabime/spdlog
+  doc_url: https://github.com/gabime/spdlog/wiki/1.-QuickStart
+  home: https://github.com/gabime/spdlog
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Super fast C++ logging library.
+extra:
+  copy_test_source_files: true
+  final: true
+  flow_run_id: c8702606-4888-49a9-b1c2-b41a561d90f3
+  recipe-maintainers:
+    - bluescarni
+    - druvus
+    - rongou
+  remote_url: git@github.com:AnacondaRecipes/spdlog-feedstock.git
+  sha: ce0071cb793cfd6c85f53a912eadb9a51d786988

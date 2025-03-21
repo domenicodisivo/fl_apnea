@@ -1,0 +1,55 @@
+{
+  "arch": "x86_64",
+  "build": "py312hecd8cb5_0",
+  "build_number": 0,
+  "channel": "https://repo.anaconda.com/pkgs/main",
+  "constrains": [],
+  "depends": [
+    "python >=3.12,<3.13.0a0"
+  ],
+  "extracted_package_dir": "/Users/domenicodisivo/Documents/apps/fl_apnea/progetto_apnea/enter/pkgs/mdurl-0.1.0-py312hecd8cb5_0",
+  "files": [
+    "lib/python3.12/site-packages/mdurl-0.1.0.dist-info/INSTALLER",
+    "lib/python3.12/site-packages/mdurl-0.1.0.dist-info/LICENSE",
+    "lib/python3.12/site-packages/mdurl-0.1.0.dist-info/METADATA",
+    "lib/python3.12/site-packages/mdurl-0.1.0.dist-info/RECORD",
+    "lib/python3.12/site-packages/mdurl-0.1.0.dist-info/REQUESTED",
+    "lib/python3.12/site-packages/mdurl-0.1.0.dist-info/WHEEL",
+    "lib/python3.12/site-packages/mdurl-0.1.0.dist-info/direct_url.json",
+    "lib/python3.12/site-packages/mdurl/__init__.py",
+    "lib/python3.12/site-packages/mdurl/__pycache__/__init__.cpython-312.pyc",
+    "lib/python3.12/site-packages/mdurl/__pycache__/_decode.cpython-312.pyc",
+    "lib/python3.12/site-packages/mdurl/__pycache__/_encode.cpython-312.pyc",
+    "lib/python3.12/site-packages/mdurl/__pycache__/_format.cpython-312.pyc",
+    "lib/python3.12/site-packages/mdurl/__pycache__/_parse.cpython-312.pyc",
+    "lib/python3.12/site-packages/mdurl/__pycache__/_url.cpython-312.pyc",
+    "lib/python3.12/site-packages/mdurl/_decode.py",
+    "lib/python3.12/site-packages/mdurl/_encode.py",
+    "lib/python3.12/site-packages/mdurl/_format.py",
+    "lib/python3.12/site-packages/mdurl/_parse.py",
+    "lib/python3.12/site-packages/mdurl/_url.py",
+    "lib/python3.12/site-packages/mdurl/py.typed"
+  ],
+  "fn": "mdurl-0.1.0-py312hecd8cb5_0.conda",
+  "license": "MIT",
+  "license_family": "MIT",
+  "link": {
+    "source": "/Users/domenicodisivo/Documents/apps/fl_apnea/progetto_apnea/enter/pkgs/mdurl-0.1.0-py312hecd8cb5_0",
+    "type": 1
+  },
+  "md5": "0d3a6bae224df024c474dfc062324218",
+  "name": "mdurl",
+  "package_tarball_full_path": "/Users/domenicodisivo/Documents/apps/fl_apnea/progetto_apnea/enter/pkgs/mdurl-0.1.0-py312hecd8cb5_0.conda",
+  "paths_data": {
+    "paths": [],
+    "paths_version": 1
+  },
+  "platform": "darwin",
+  "requested_spec": "defaults/osx-64::mdurl==0.1.0=py312hecd8cb5_0[md5=0d3a6bae224df024c474dfc062324218]",
+  "sha256": "9dd60f6bf0fd464c9b6e2549fafc86b1d91a61a723ac1b7bc638a3139d48f3ca",
+  "size": 22121,
+  "subdir": "osx-64",
+  "timestamp": 1699239512000,
+  "url": "https://repo.anaconda.com/pkgs/main/osx-64/mdurl-0.1.0-py312hecd8cb5_0.conda",
+  "version": "0.1.0"
+}

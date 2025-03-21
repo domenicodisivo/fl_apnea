@@ -1,0 +1,102 @@
+# This file created by conda-build 24.9.0
+# meta.yaml template originally from:
+# /var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_cbybko3h26/clone/recipe, last modified Fri Dec 20 14:20:48 2024
+# ------------------------------------------------
+
+package:
+  name: pydantic-core
+  version: 2.27.1
+source:
+  sha256: 62a763352879b84aa31058fc931884055fd75089cccbd9d58bb6afd01141b235
+  url: https://pypi.io/packages/source/p/pydantic-core/pydantic_core-2.27.1.tar.gz
+build:
+  number: '0'
+  script:
+    - /var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_cbybko3h26/croot/pydantic-core_1734726062333/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_/bin/python
+      -m pip install . -vv --no-deps --no-build-isolation
+    - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+  script_env:
+    - RUSTFLAGS=-C link-args=-headerpad_max_install_names
+  string: py312h83de92b_0
+requirements:
+  build:
+    - cargo-bundle-licenses 0.5.0 h7242b5c_0
+    - cctools_osx-64 949.0.1 hc7db93f_25
+    - clang 14.0.6 hecd8cb5_2
+    - clang-14 14.0.6 default_h182e8cd_2
+    - clang_osx-64 14.0.6 hb1e4b1b_0
+    - clangxx 14.0.6 default_h182e8cd_2
+    - clangxx_osx-64 14.0.6 hd8b9576_0
+    - compiler-rt 14.0.6 hda8b6b8_0
+    - compiler-rt_osx-64 14.0.6 h8d5cb93_0
+    - ld64_osx-64 530 h70f3046_25
+    - ldid 2.1.5 hc58f1be_3
+    - libclang-cpp14 14.0.6 default_h182e8cd_2
+    - libcxx 14.0.6 h9765a3e_0
+    - libffi 3.4.4 hecd8cb5_1
+    - libllvm14 14.0.6 h26321d7_4
+    - llvm-tools 14.0.6 h91fad77_4
+    - rust 1.82.0 he5d3d0f_0
+    - rust_osx-64 1.82.0 he5d3d0f_0
+    - tapi 1000.10.8 ha1b3eb9_0
+    - zlib 1.2.13 h4b97444_1
+  host:
+    - bzip2 1.0.8 h6c40b1e_6
+    - ca-certificates 2024.11.26 hecd8cb5_0
+    - expat 2.6.4 h6d0c2b6_0
+    - libcxx 14.0.6 h9765a3e_0
+    - libffi 3.4.4 hecd8cb5_1
+    - maturin 1.5.1 py312h47c78ee_1
+    - ncurses 6.4 hcec6c5f_0
+    - openssl 3.0.15 h46256e1_0
+    - pip 24.2 py312hecd8cb5_0
+    - python 3.12.8 hcd54a6c_0
+    - readline 8.2 hca72f7f_0
+    - setuptools 75.1.0 py312hecd8cb5_0
+    - sqlite 3.45.3 h6c40b1e_0
+    - tk 8.6.14 h4d00af3_0
+    - typing-extensions 4.12.2 py312hecd8cb5_0
+    - typing_extensions 4.12.2 py312hecd8cb5_0
+    - tzdata 2024b h04d1e81_0
+    - wheel 0.44.0 py312hecd8cb5_0
+    - xz 5.4.6 h6c40b1e_1
+    - zlib 1.2.13 h4b97444_1
+  run:
+    - python >=3.12,<3.13.0a0
+    - typing-extensions >=4.6.0,!=4.7.0
+  run_constrained:
+    - __osx >=10.12
+test:
+  commands:
+    - pip check
+    - python -c "from pydantic_core import PydanticUndefinedType"
+  imports:
+    - pydantic_core
+  requires:
+    - pip
+about:
+  description: 'This package provides the core functionality for pydantic validation
+    and serialization.
+
+    '
+  dev_url: https://github.com/pydantic/pydantic-core
+  doc_url: https://docs.pydantic.dev
+  home: https://github.com/pydantic/pydantic-core
+  license: MIT
+  license_family: MIT
+  license_file:
+    - LICENSE
+    - THIRDPARTY.yml
+  summary: Core validation logic for pydantic written in rust
+extra:
+  copy_test_source_files: true
+  final: true
+  flow_run_id: cbb0df71-d3b2-43d4-a24e-df7dc3b6aded
+  recipe-maintainers:
+    - adriangb
+    - dmontagu
+    - pavelzw
+    - samuelcolvin
+    - xhochy
+  remote_url: git@github.com:AnacondaRecipes/pydantic-core-feedstock.git
+  sha: f5cb5ac27c36d23764c5596c2208d6b1a174bec3

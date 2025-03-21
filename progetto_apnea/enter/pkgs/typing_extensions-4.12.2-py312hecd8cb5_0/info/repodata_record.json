@@ -1,0 +1,22 @@
+{
+  "arch": "x86_64",
+  "build": "py312hecd8cb5_0",
+  "build_number": 0,
+  "channel": "https://repo.anaconda.com/pkgs/main/",
+  "constrains": [],
+  "depends": [
+    "python >=3.12,<3.13.0a0"
+  ],
+  "fn": "typing_extensions-4.12.2-py312hecd8cb5_0.conda",
+  "license": "PSF-2.0",
+  "license_family": "PSF",
+  "md5": "714e2054255b2dfd1f183dada883a77f",
+  "name": "typing_extensions",
+  "platform": "darwin",
+  "sha256": "c455ebdbbb3acf1cd3a8c2a676c0d6393dc8aa4f49741b0a2e3343b7604ebf81",
+  "size": 82157,
+  "subdir": "osx-64",
+  "timestamp": 1734715028000,
+  "url": "https://repo.anaconda.com/pkgs/main/osx-64/typing_extensions-4.12.2-py312hecd8cb5_0.conda",
+  "version": "4.12.2"
+}

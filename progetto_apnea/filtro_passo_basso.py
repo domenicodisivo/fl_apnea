@@ -3,6 +3,8 @@ import numpy as np
 from scipy.signal import butter, filtfilt, find_peaks
 from scipy.interpolate import interp1d
 import matplotlib.pyplot as plt
+from config import get_raw_data_path
+import os
 
 def butter_lowpass(cutoff, fs, order=4):
     nyquist = 0.5 * fs
@@ -95,7 +97,7 @@ def plot_analysis(probabilities, filtered_probabilities, amplitudes):
     plt.show()
 
 if __name__ == "__main__":
-    csv_file = "ecg_bcg1_indexed_clean5.csv"
+    csv_file = os.path.join(get_raw_data_path(), "ecg_bcg1_indexed_clean5.csv")
     
     print("Caricamento dati...")
     bcg_data, ecg_data = load_data(csv_file)

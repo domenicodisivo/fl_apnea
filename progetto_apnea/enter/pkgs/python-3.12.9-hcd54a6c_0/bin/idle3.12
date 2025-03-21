@@ -1,0 +1,5 @@
+#!/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_e05g6ipkby/croot/python-split_1738867541205/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_p/bin/python3.12
+
+from idlelib.pyshell import main
+if __name__ == '__main__':
+    main()

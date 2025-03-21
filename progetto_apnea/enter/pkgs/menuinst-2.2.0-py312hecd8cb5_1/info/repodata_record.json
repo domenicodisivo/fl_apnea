@@ -1,0 +1,22 @@
+{
+  "arch": "x86_64",
+  "build": "py312hecd8cb5_1",
+  "build_number": 1,
+  "channel": "https://repo.anaconda.com/pkgs/main/",
+  "constrains": [],
+  "depends": [
+    "python >=3.12,<3.13.0a0"
+  ],
+  "fn": "menuinst-2.2.0-py312hecd8cb5_1.conda",
+  "license": "BSD-3-Clause AND MIT",
+  "license_family": "BSD",
+  "md5": "fdccc7378686010239a1f75d39ad2c51",
+  "name": "menuinst",
+  "platform": "darwin",
+  "sha256": "7e27940582e810d3168ad4e087f3bf82b161bcf6da4fc346c0802c99d9fd7e9e",
+  "size": 260773,
+  "subdir": "osx-64",
+  "timestamp": 1738945624000,
+  "url": "https://repo.anaconda.com/pkgs/main/osx-64/menuinst-2.2.0-py312hecd8cb5_1.conda",
+  "version": "2.2.0"
+}

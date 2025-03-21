@@ -1,0 +1,9 @@
+libdir=/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_28g7k7lzd6/croot/libsolv-suite_1734374056106/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_/lib
+includedir=/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_28g7k7lzd6/croot/libsolv-suite_1734374056106/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_/include
+
+Name: libsolvext
+Description: Library for reading repositories
+Version: 0.7.30
+Requires: libsolv
+Libs: -L${libdir} -lsolvext
+Cflags: -I${includedir}

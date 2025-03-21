@@ -1,0 +1,35 @@
+{
+  "arch": "x86_64",
+  "build": "py312hecd8cb5_0",
+  "build_number": 0,
+  "channel": "https://repo.anaconda.com/pkgs/main",
+  "constrains": [],
+  "depends": [
+    "python >=3.12,<3.13.0a0",
+    "typing_extensions 4.12.2 py312hecd8cb5_0"
+  ],
+  "extracted_package_dir": "/Users/domenicodisivo/Documents/apps/fl_apnea/progetto_apnea/enter/pkgs/typing-extensions-4.12.2-py312hecd8cb5_0",
+  "files": [],
+  "fn": "typing-extensions-4.12.2-py312hecd8cb5_0.conda",
+  "license": "PSF-2.0",
+  "license_family": "PSF",
+  "link": {
+    "source": "/Users/domenicodisivo/Documents/apps/fl_apnea/progetto_apnea/enter/pkgs/typing-extensions-4.12.2-py312hecd8cb5_0",
+    "type": 1
+  },
+  "md5": "80ff63b787320d448470777cb877297e",
+  "name": "typing-extensions",
+  "package_tarball_full_path": "/Users/domenicodisivo/Documents/apps/fl_apnea/progetto_apnea/enter/pkgs/typing-extensions-4.12.2-py312hecd8cb5_0.conda",
+  "paths_data": {
+    "paths": [],
+    "paths_version": 1
+  },
+  "platform": "darwin",
+  "requested_spec": "defaults/osx-64::typing-extensions==4.12.2=py312hecd8cb5_0[md5=80ff63b787320d448470777cb877297e]",
+  "sha256": "9069b3f9c1e5d400859e187ccef9e06ea3c796a390f1f3747e03a5eab48288aa",
+  "size": 10436,
+  "subdir": "osx-64",
+  "timestamp": 1734715033000,
+  "url": "https://repo.anaconda.com/pkgs/main/osx-64/typing-extensions-4.12.2-py312hecd8cb5_0.conda",
+  "version": "4.12.2"
+}

@@ -1,0 +1,13 @@
+# Package Information for pkg-config
+
+prefix=/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_69mdgu2uiz/croot/sqlite_1714488255326/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: SQLite
+Description: SQL database engine
+Version: 3.45.3
+Libs: -L${libdir} -lsqlite3
+Libs.private: -lz 
+Cflags: -I${includedir}

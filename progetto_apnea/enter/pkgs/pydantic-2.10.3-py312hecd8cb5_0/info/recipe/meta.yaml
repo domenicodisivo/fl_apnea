@@ -1,0 +1,77 @@
+# This file created by conda-build 24.9.0
+# meta.yaml template originally from:
+# /var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_7chf34vaoh/clone/recipe, last modified Fri Dec 20 17:07:51 2024
+# ------------------------------------------------
+
+package:
+  name: pydantic
+  version: 2.10.3
+source:
+  sha256: cb5ac360ce894ceacd69c403187900a02c4b20b693a9dd1d643e1effab9eadf9
+  url: https://pypi.io/packages/source/p/pydantic/pydantic-2.10.3.tar.gz
+build:
+  number: '0'
+  script: /var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_7chf34vaoh/croot/pydantic_1734736078302/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_place/bin/python
+    -m pip install . --no-deps --no-build-isolation -vv
+  string: py312hecd8cb5_0
+requirements:
+  host:
+    - bzip2 1.0.8 h6c40b1e_6
+    - ca-certificates 2024.11.26 hecd8cb5_0
+    - expat 2.6.4 h6d0c2b6_0
+    - hatch-fancy-pypi-readme 24.1.0 py312hecd8cb5_0
+    - hatchling 1.27.0 py312hecd8cb5_0
+    - libcxx 14.0.6 h9765a3e_0
+    - libffi 3.4.4 hecd8cb5_1
+    - ncurses 6.4 hcec6c5f_0
+    - openssl 3.0.15 h46256e1_0
+    - packaging 24.2 py312hecd8cb5_0
+    - pathspec 0.10.3 py312hecd8cb5_0
+    - pip 24.2 py312hecd8cb5_0
+    - pluggy 1.5.0 py312hecd8cb5_0
+    - python 3.12.8 hcd54a6c_0
+    - readline 8.2 hca72f7f_0
+    - setuptools 75.1.0 py312hecd8cb5_0
+    - sqlite 3.45.3 h6c40b1e_0
+    - tk 8.6.14 h4d00af3_0
+    - trove-classifiers 2024.10.14 py312hecd8cb5_0
+    - tzdata 2024b h04d1e81_0
+    - wheel 0.44.0 py312hecd8cb5_0
+    - xz 5.4.6 h6c40b1e_1
+    - zlib 1.2.13 h4b97444_1
+  run:
+    - annotated-types >=0.6.0
+    - pydantic-core ==2.27.1
+    - python >=3.12,<3.13.0a0
+    - typing-extensions >=4.12.2
+  run_constrained:
+    - email-validator >=2.0.0
+test:
+  commands:
+    - pip check
+  imports:
+    - pydantic
+  requires:
+    - pip
+about:
+  description: 'Data validation and settings management using python type hinting.
+
+    See documentation doc_url for more details.
+
+    '
+  dev_url: https://github.com/pydantic/pydantic
+  doc_url: https://docs.pydantic.dev/latest/
+  home: https://github.com/pydantic/pydantic
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Data validation and settings management using python type hinting
+extra:
+  copy_test_source_files: true
+  final: true
+  flow_run_id: 7ccf9922-7914-452e-9e70-442a805ea052
+  recipe-maintainers:
+    - dgasmith
+    - samuelcolvin
+  remote_url: git@github.com:AnacondaRecipes/pydantic-feedstock.git
+  sha: fff6a351cfd621c77cb96639c7ddb28d36b5fbff

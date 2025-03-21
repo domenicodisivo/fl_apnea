@@ -1,0 +1,19 @@
+#***************************************************************************
+# Project        ___       __ _ _ __ ___  ___ 
+#               / __|____ / _` | '__/ _ \/ __|
+#              | (_|_____| (_| | | |  __/\__ \
+#               \___|     \__,_|_|  \___||___/
+#
+exec_prefix=/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_276x1i50lc/croot/c-ares-split_1693901976884/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_p/bin
+libdir=/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_276x1i50lc/croot/c-ares-split_1693901976884/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_p/lib
+includedir=/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_276x1i50lc/croot/c-ares-split_1693901976884/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_p/include
+
+Name: c-ares
+URL: https://c-ares.org/
+Description: asynchronous DNS lookup library
+Version: 1.19.1
+Requires: 
+Requires.private: 
+Cflags: -I${includedir} 
+Libs: -L${libdir} -lcares
+Libs.private: 

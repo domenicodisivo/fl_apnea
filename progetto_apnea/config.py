@@ -6,7 +6,7 @@ def get_base_path():
     if system == 'Windows':
         return r'c:\Users\domen\OneDrive\Desktop\Template\apps\progetto_apnea'
     elif system == 'Darwin':  # MacOS
-        return os.path.expanduser('~/Desktop/Template/apps/progetto_apnea')
+        return '/Users/domenicodisivo/Documents/apps/fl_apnea/progetto_apnea'
     else:
         raise OSError(f"Sistema operativo {system} non supportato")
 

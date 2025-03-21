@@ -1,0 +1,19 @@
+{
+  "arch": "x86_64",
+  "build": "py312h83de92b_0",
+  "build_number": 0,
+  "constrains": [
+    "__osx >=10.12"
+  ],
+  "depends": [
+    "python >=3.12,<3.13.0a0",
+    "typing-extensions >=4.6.0,!=4.7.0"
+  ],
+  "license": "MIT",
+  "license_family": "MIT",
+  "name": "pydantic-core",
+  "platform": "osx",
+  "subdir": "osx-64",
+  "timestamp": 1734726806977,
+  "version": "2.27.1"
+}

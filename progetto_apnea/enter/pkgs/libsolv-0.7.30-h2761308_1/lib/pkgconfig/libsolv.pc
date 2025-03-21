@@ -1,0 +1,8 @@
+libdir=/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_28g7k7lzd6/croot/libsolv-suite_1734374056106/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_/lib
+includedir=/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_28g7k7lzd6/croot/libsolv-suite_1734374056106/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_/include
+
+Name: libsolv
+Description: Library for solving packages
+Version: 0.7.30
+Libs: -L${libdir} -lsolv
+Cflags: -I${includedir}

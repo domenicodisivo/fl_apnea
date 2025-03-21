@@ -3,6 +3,8 @@ import numpy as np
 from scipy.signal import resample, find_peaks
 from scipy.interpolate import interp1d
 import matplotlib.pyplot as plt
+from config import get_raw_data_path
+import os
 
 # Parametri globali
 original_rate = 1000
@@ -117,7 +119,7 @@ def compute_apnea_probability(ecg_signal, sampling_rate=100):
     return probabilities, time
 
 if __name__ == "__main__":
-    csv_file = "ecg_bcg1_indexed_clean5.csv"
+    csv_file = os.path.join(get_raw_data_path(), "ecg_bcg1_indexed_clean5.csv")
     
     print("Caricamento e sottocampionamento...")
     bcg_downsampled, ecg_downsampled, new_rate = load_and_downsample(csv_file, original_rate, target_rate, chunk_size)

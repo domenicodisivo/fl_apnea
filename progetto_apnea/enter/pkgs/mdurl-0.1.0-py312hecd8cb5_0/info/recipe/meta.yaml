@@ -1,0 +1,52 @@
+# This file created by conda-build 3.27.0
+# meta.yaml template originally from:
+# /Users/builder/cbouss/perseverance-python-buildout/aggregate/mdurl-feedstock/recipe, last modified Sun Nov  5 19:43:34 2023
+# ------------------------------------------------
+
+package:
+  name: mdurl
+  version: 0.1.0
+source:
+  sha256: 94873a969008ee48880fb21bad7de0349fef529f3be178969af5817239e9b990
+  url: https://pypi.io/packages/source/m/mdurl/mdurl-0.1.0.tar.gz
+build:
+  number: '0'
+  script: /Users/builder/cbouss/perseverance-python-buildout/croot/mdurl_1699239487349/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_p/bin/python
+    -m pip install . -vv
+  string: py312hecd8cb5_0
+requirements:
+  host:
+    - bzip2 1.0.8 h1de35cc_0
+    - ca-certificates 2023.08.22 hecd8cb5_0
+    - expat 2.5.0 hcec6c5f_0
+    - flit-core 3.9.0 py312hb61568f_0
+    - libcxx 14.0.6 h9765a3e_0
+    - libffi 3.4.4 hecd8cb5_0
+    - ncurses 6.4 hcec6c5f_0
+    - openssl 3.0.12 hca72f7f_0
+    - pip 23.3 py312hecd8cb5_0
+    - python 3.12.0 hd58486a_0
+    - readline 8.2 hca72f7f_0
+    - setuptools 68.0.0 py312hecd8cb5_0
+    - sqlite 3.41.2 h6c40b1e_0
+    - tk 8.6.12 h5d9f67b_0
+    - tzdata 2023c h04d1e81_0
+    - wheel 0.37.1 pyhd3eb1b0_0
+    - xz 5.4.2 h6c40b1e_0
+    - zlib 1.2.13 h4dc903c_0
+  run:
+    - python >=3.12,<3.13.0a0
+test:
+  imports:
+    - mdurl
+about:
+  home: https://github.com/executablebooks/mdurl
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: URL utilities for markdown-it-py parser.
+extra:
+  copy_test_source_files: true
+  final: true
+  recipe-maintainers:
+    - chrisjsewell

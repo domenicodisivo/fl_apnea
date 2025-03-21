@@ -1,0 +1,80 @@
+# This file created by conda-build 3.27.0
+# meta.yaml template originally from:
+# /Users/builder/cbouss/perseverance-python-buildout/aggregate/pygments-feedstock/recipe, last modified Sun Nov  5 19:44:24 2023
+# ------------------------------------------------
+
+package:
+  name: pygments
+  version: 2.15.1
+source:
+  sha256: 8ace4d3c1dd481894b2005f560ead0f9f19ee64fe983366be1a21e171d12775c
+  url: https://pypi.io/packages/source/p/pygments/Pygments-2.15.1.tar.gz
+build:
+  entry_points:
+    - pygmentize = pygments.cmdline:main
+  number: '1'
+  script: /Users/builder/cbouss/perseverance-python-buildout/croot/pygments_1699240212223/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehol/bin/python
+    -m pip install . --no-deps --no-build-isolation
+  string: py312hecd8cb5_1
+requirements:
+  host:
+    - bzip2 1.0.8 h1de35cc_0
+    - ca-certificates 2023.08.22 hecd8cb5_0
+    - expat 2.5.0 hcec6c5f_0
+    - libcxx 14.0.6 h9765a3e_0
+    - libffi 3.4.4 hecd8cb5_0
+    - ncurses 6.4 hcec6c5f_0
+    - openssl 3.0.12 hca72f7f_0
+    - pip 23.3 py312hecd8cb5_0
+    - python 3.12.0 hd58486a_0
+    - readline 8.2 hca72f7f_0
+    - setuptools 68.0.0 py312hecd8cb5_0
+    - sqlite 3.41.2 h6c40b1e_0
+    - tk 8.6.12 h5d9f67b_0
+    - tzdata 2023c h04d1e81_0
+    - wheel 0.37.1 pyhd3eb1b0_0
+    - xz 5.4.2 h6c40b1e_0
+    - zlib 1.2.13 h4dc903c_0
+  run:
+    - python >=3.12,<3.13.0a0
+test:
+  commands:
+    - pip check
+    - pygmentize -h
+  imports:
+    - pygments
+    - pygments.filters
+    - pygments.formatters
+    - pygments.lexers
+    - pygments.plugin
+    - pygments.styles
+  requires:
+    - pip
+about:
+  description: 'This is the source of Pygments. It is
+
+    a generic syntax highlighter written in Python
+
+    that supports over 500 languages and text formats,
+
+    for use in code hosting, forums, wikis or other applications
+
+    that need to prettify source code.
+
+    '
+  dev_url: https://github.com/pygments/pygments
+  doc_url: https://pygments.org/docs/
+  home: https://pygments.org/
+  license: BSD-2-Clause
+  license_family: BSD
+  license_file: LICENSE
+  summary: Pygments is a generic syntax highlighter suitable for use in code hosting,
+    forums, wikis or other applications that need to prettify source code.
+extra:
+  copy_test_source_files: true
+  final: true
+  recipe-maintainers:
+    - jakirkham
+    - ocefpaf
+    - pelson
+    - scopatz

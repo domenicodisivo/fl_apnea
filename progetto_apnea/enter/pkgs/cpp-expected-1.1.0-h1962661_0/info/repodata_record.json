@@ -1,0 +1,22 @@
+{
+  "arch": "x86_64",
+  "build": "h1962661_0",
+  "build_number": 0,
+  "channel": "https://repo.anaconda.com/pkgs/main/",
+  "constrains": [],
+  "depends": [
+    "libcxx >=14.0.6"
+  ],
+  "fn": "cpp-expected-1.1.0-h1962661_0.conda",
+  "license": "CC0-1.0",
+  "license_family": "CC",
+  "md5": "3a27d83f1e31db2883069a1f629923d0",
+  "name": "cpp-expected",
+  "platform": "darwin",
+  "sha256": "ec85a544203257ce6ac9996a37dded7a326d089ee78ac401aa647887a133a90c",
+  "size": 134130,
+  "subdir": "osx-64",
+  "timestamp": 1734039374000,
+  "url": "https://repo.anaconda.com/pkgs/main/osx-64/cpp-expected-1.1.0-h1962661_0.conda",
+  "version": "1.1.0"
+}

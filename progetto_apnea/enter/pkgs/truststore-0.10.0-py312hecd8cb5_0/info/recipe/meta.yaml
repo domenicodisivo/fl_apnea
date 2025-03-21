@@ -1,0 +1,78 @@
+# This file created by conda-build 24.9.0
+# meta.yaml template originally from:
+# /var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_16_69k8s1i/clone/recipe, last modified Fri Jan 10 17:01:57 2025
+# ------------------------------------------------
+
+package:
+  name: truststore
+  version: 0.10.0
+source:
+  fn: truststore-0.10.0.tar.gz
+  sha256: 12e89641dba78a9427f782ad2d824bed93583a9465002fe59b63c3fd12cbe8f5
+  url: https://github.com/sethmlarson/truststore/archive/refs/tags/v0.10.0.tar.gz
+build:
+  number: '0'
+  script: /var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_16_69k8s1i/croot/truststore_1736550123387/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_pla/bin/python
+    -m pip install . -vv --no-deps --no-build-isolation
+  string: py312hecd8cb5_0
+requirements:
+  host:
+    - bzip2 1.0.8 h6c40b1e_6
+    - ca-certificates 2024.12.31 hecd8cb5_0
+    - expat 2.6.4 h6d0c2b6_0
+    - flit-core 3.9.0 py312hee8aa70_1
+    - libcxx 14.0.6 h9765a3e_0
+    - libffi 3.4.4 hecd8cb5_1
+    - ncurses 6.4 hcec6c5f_0
+    - openssl 3.0.15 h46256e1_0
+    - pip 24.2 py312hecd8cb5_0
+    - python 3.12.8 hcd54a6c_0
+    - readline 8.2 hca72f7f_0
+    - setuptools 75.1.0 py312hecd8cb5_0
+    - sqlite 3.45.3 h6c40b1e_0
+    - tk 8.6.14 h4d00af3_0
+    - tzdata 2024b h04d1e81_0
+    - wheel 0.44.0 py312hecd8cb5_0
+    - xz 5.4.6 h6c40b1e_1
+    - zlib 1.2.13 h4b97444_1
+  run:
+    - python >=3.12,<3.13.0a0
+test:
+  commands:
+    - pip check
+    - pytest -v -s -rs --no-flaky-report --max-runs=3 tests/
+  imports:
+    - truststore
+  requires:
+    - aiohttp
+    - flaky
+    - httpx
+    - pip
+    - pyopenssl
+    - pytest
+    - pytest-asyncio
+    - pytest-httpserver
+    - requests
+    - trustme
+    - urllib3
+  source_files:
+    - tests
+about:
+  description: "A library which exposes native system certificate stores (ie \u201C\
+    trust stores\u201D)\nthrough an ssl.SSLContext-like API. This means that Python\
+    \ applications no\nlonger need to rely on certifi as a root certificate store.\n"
+  dev_url: https://github.com/sethmlarson/truststore
+  doc_url: https://truststore.readthedocs.io/
+  home: https://github.com/sethmlarson/truststore
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Verify certificates using native system trust stores
+extra:
+  copy_test_source_files: true
+  final: true
+  flow_run_id: 16e60333-8f9b-492f-a914-dc9c9832639d
+  recipe-maintainers:
+    - wolfv
+  remote_url: git@github.com:AnacondaRecipes/truststore-feedstock.git
+  sha: 54e19d1b31e86cb72438537bf2fd45b4c0d3ef6b

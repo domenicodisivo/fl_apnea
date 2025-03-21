@@ -4,109 +4,113 @@ import matplotlib.pyplot as plt
 from scipy import signal
 from scipy.signal import find_peaks
 from scipy.interpolate import interp1d
+from config import get_raw_data_path, get_figures_path
+import os
 
-def load_data(file_path):
-    df = pd.read_csv(file_path)
-    bcg_signals = df.iloc[:, 1:13]
-    ecg_signal = df.iloc[:, -1]
-    return bcg_signals, ecg_signal
+def carica_dati(percorso_file):
+    df = pd.read_csv(percorso_file)
+    segnali_bcg = df.iloc[:, 1:13]
+    segnale_ecg = df.iloc[:, -1]
+    return segnali_bcg, segnale_ecg
 
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))
 
-def compute_apnea_probability(ecg_signal, sampling_rate=1000):
-    peaks, _ = find_peaks(ecg_signal, distance=600, height=np.mean(ecg_signal))
-    rr_intervals_seconds = np.diff(peaks) / sampling_rate
+def calcola_probabilita_apnea(segnale_ecg, frequenza_campionamento=1000):
+    picchi, _ = find_peaks(segnale_ecg, distance=600, height=np.mean(segnale_ecg))
+    intervalli_rr_secondi = np.diff(picchi) / frequenza_campionamento
     
-    rr_mean = np.mean(rr_intervals_seconds)
-    rr_std = np.std(rr_intervals_seconds)
-    rr_z_scores = (rr_intervals_seconds - rr_mean) / rr_std
+    media_rr = np.mean(intervalli_rr_secondi)
+    std_rr = np.std(intervalli_rr_secondi)
+    z_scores_rr = (intervalli_rr_secondi - media_rr) / std_rr
     
-    rr_apnea_probability = sigmoid(rr_z_scores)
+    probabilita_apnea_rr = sigmoid(z_scores_rr)
     
-    peak_times = peaks[:-1] / sampling_rate
-    interp_func = interp1d(peak_times, rr_apnea_probability, kind='linear', 
+    tempi_picchi = picchi[:-1] / frequenza_campionamento
+    funzione_interp = interp1d(tempi_picchi, probabilita_apnea_rr, kind='linear', 
                           fill_value="extrapolate")
     
-    time = np.arange(len(ecg_signal)) / sampling_rate
-    probabilities = interp_func(time)
+    tempo = np.arange(len(segnale_ecg)) / frequenza_campionamento
+    probabilita = funzione_interp(tempo)
     
-    return probabilities, time
+    return probabilita, tempo
 
-def create_event_masks(signal_length, sampling_rate=1000):
-    time = np.arange(signal_length) / sampling_rate
+def crea_maschere_eventi(lunghezza_segnale, frequenza_campionamento=1000):
+    tempo = np.arange(lunghezza_segnale) / frequenza_campionamento
     
-    breath_holding_mask = np.zeros(signal_length, dtype=bool)
-    movement_mask = np.zeros(signal_length, dtype=bool)
+    maschera_apnea = np.zeros(lunghezza_segnale, dtype=bool)
+    maschera_movimento = np.zeros(lunghezza_segnale, dtype=bool)
     
-    breath_holding_periods = [
-        (60, 90),     # First breath-holding during inhalation
-        (120, 150),   # Second breath-holding during inhalation
-        (180, 210),   # Third breath-holding during exhalation
-        (240, 270),   # Fourth breath-holding during exhalation
-        (300, 330),   # Fifth breath-holding during exhalation
-        (480, 510),   # Sixth breath-holding during inhalation
-        (540, 570),   # Seventh breath-holding during inhalation
-        (600, 630),   # Eighth breath-holding during exhalation
-        (660, 690),   # Ninth breath-holding during exhalation
+    periodi_apnea = [
+        (60, 90),     # Prima apnea durante inspirazione
+        (120, 150),   # Seconda apnea durante inspirazione
+        (180, 210),   # Terza apnea durante espirazione
+        (240, 270),   # Quarta apnea durante espirazione
+        (300, 330),   # Quinta apnea durante espirazione
+        (480, 510),   # Sesta apnea durante inspirazione
+        (540, 570),   # Settima apnea durante inspirazione
+        (600, 630),   # Ottava apnea durante espirazione
+        (660, 690),   # Nona apnea durante espirazione
     ]
     
-    movement_periods = [
-        (420, 480),   # turning on the side
+    periodi_movimento = [
+        (420, 480),   # Girarsi su un fianco
     ]
     
-    for start, end in breath_holding_periods:
-        breath_holding_mask[(time >= start) & (time <= end)] = True
+    for inizio, fine in periodi_apnea:
+        maschera_apnea[(tempo >= inizio) & (tempo <= fine)] = True
     
-    for start, end in movement_periods:
-        movement_mask[(time >= start) & (time <= end)] = True
+    for inizio, fine in periodi_movimento:
+        maschera_movimento[(tempo >= inizio) & (tempo <= fine)] = True
     
-    return breath_holding_mask, movement_mask, time
+    return maschera_apnea, maschera_movimento, tempo
 
-def plot_analysis(bcg_signals, probabilities, breath_mask, movement_mask, time):
+def visualizza_analisi(segnali_bcg, probabilita, maschera_apnea, maschera_movimento, tempo):
     plt.figure(figsize=(15, 10))
     
-    # Plot BCG signal (first channel)
-    bcg_signal = bcg_signals.iloc[:, 0]
-    plt.plot(time, bcg_signal / np.max(np.abs(bcg_signal)) * 0.5, 'k-', 
-             alpha=0.3, label='BCG Signal (normalized)')
+    # Grafico del segnale BCG (primo canale)
+    segnale_bcg = segnali_bcg.iloc[:, 0]
+    plt.plot(tempo, segnale_bcg / np.max(np.abs(segnale_bcg)) * 0.5, 'k-', 
+             alpha=0.3, label='Segnale BCG (normalizzato)')
     
-    # Plot probability
-    plt.plot(time, probabilities, 'r-', label='Apnea Probability', linewidth=2)
+    # Grafico della probabilità
+    plt.plot(tempo, probabilita, 'r-', label='Probabilità Apnea', linewidth=2)
     
-    # Highlight breath-holding periods
-    plt.fill_between(time, 0, 1,
-                    where=breath_mask, color='yellow', alpha=0.3,
-                    label='Breath Holding')
+    # Evidenzia periodi di apnea
+    plt.fill_between(tempo, 0, 1,
+                    where=maschera_apnea, color='yellow', alpha=0.3,
+                    label='Trattenimento Respiro')
     
-    # Highlight movement periods
-    plt.fill_between(time, 0, 1,
-                    where=movement_mask, color='blue', alpha=0.3,
-                    label='Movement')
+    # Evidenzia periodi di movimento
+    plt.fill_between(tempo, 0, 1,
+                    where=maschera_movimento, color='blue', alpha=0.3,
+                    label='Movimento')
     
-    plt.xlabel('Time (s)')
-    plt.ylabel('Apnea Probability')
-    plt.title('Apnea Probability Analysis with Breath Holding and Movement Periods')
+    plt.xlabel('Tempo (s)')
+    plt.ylabel('Probabilità Apnea')
+    plt.title('Analisi della Probabilità di Apnea con Periodi di Apnea e Movimento')
     plt.ylim(0, 1)
-    plt.legend()
+    plt.legend(loc='upper right')
     plt.grid(True)
+    
+    plt.savefig(os.path.join(get_figures_path(), 'analisi_apnea.png'), dpi=300, bbox_inches='tight')
     plt.show()
 
 def main():
-    # Replace with your CSV file path
-    file_path = "ecg_bcg1_indexed_clean3.csv"
+    # Usa il percorso dal config per il file CSV
+    percorso_file = os.path.join(get_raw_data_path(), "ecg_bcg1_indexed_clean3.csv")
     
-    # Load data
-    bcg_signals, ecg_signal = load_data(file_path)
+    # Carica i dati
+    segnali_bcg, segnale_ecg = carica_dati(percorso_file)
     
-    # Compute apnea probability
-    probabilities, time = compute_apnea_probability(ecg_signal)
+    # Calcola la probabilità di apnea
+    probabilita, tempo = calcola_probabilita_apnea(segnale_ecg)
     
-    # Create event masks
-    breath_mask, movement_mask, _ = create_event_masks(len(ecg_signal))
+    # Crea le maschere degli eventi
+    maschera_apnea, maschera_movimento, _ = crea_maschere_eventi(len(segnale_ecg))
     
-    # Plot analysis
-    plot_analysis(bcg_signals, probabilities, breath_mask, movement_mask, time)
+    # Visualizza l'analisi
+    visualizza_analisi(segnali_bcg, probabilita, maschera_apnea, maschera_movimento, tempo)
 
 if __name__ == "__main__":
     main()

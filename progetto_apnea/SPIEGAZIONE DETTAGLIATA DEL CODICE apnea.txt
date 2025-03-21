@@ -1,0 +1,64 @@
+SPIEGAZIONE DETTAGLIATA DEL CODICE DI ANALISI APNEA
+
+1. IMPORTAZIONE E CARICAMENTO DATI
+- Funzione load_data():
+  * Carica il file CSV
+  * Estrae le 12 colonne BCG (1-12)
+  * Estrae la colonna ECG (ultima)
+  * Restituisce entrambi i segnali
+
+2. FUNZIONE SIGMOID
+- Converte qualsiasi numero in probabilità tra 0 e 1
+- Formula: 1 / (1 + e^(-x))
+- Usata per convertire z-scores in probabilità
+
+3. CALCOLO PROBABILITÀ APNEA (compute_apnea_probability)
+- Trova i picchi R nel segnale ECG (find_peaks)
+- Calcola intervalli RR in secondi (diff/sampling_rate)
+- Calcola z-scores degli intervalli RR:
+  * Media e deviazione standard degli intervalli
+  * Z-score = (valore - media) / deviazione_standard
+- Converte z-scores in probabilità usando sigmoid
+- Interpola per avere probabilità continue nel tempo
+
+4. CREAZIONE MASCHERE EVENTI (create_event_masks)
+- Crea array temporale
+- Inizializza maschere booleane per:
+  * Periodi di apnea (30 secondi ciascuno)
+  * Periodo di movimento
+- Periodi di apnea:
+  * 60-90s (inhalation)
+  * 120-150s (inhalation)
+  * 180-210s (exhalation)
+  * 240-270s (exhalation)
+  * 300-330s (exhalation)
+  * 480-510s (inhalation)
+  * 540-570s (inhalation)
+  * 600-630s (exhalation)
+  * 660-690s (exhalation)
+- Periodo movimento: 420-480s
+
+5. VISUALIZZAZIONE (plot_analysis)
+- Crea grafico (15x10)
+- Plotta:
+  * Segnale BCG normalizzato (nero, alpha=0.3)
+  * Probabilità di apnea (rosso)
+  * Zone di apnea (giallo, alpha=0.3)
+  * Zone di movimento (blu, alpha=0.3)
+- Aggiunge:
+  * Etichette assi
+  * Titolo
+  * Legenda
+  * Griglia
+
+6. FUNZIONE PRINCIPALE (main)
+- Carica i dati dal file CSV
+- Calcola probabilità di apnea
+- Crea maschere eventi
+- Visualizza risultati
+
+Il codice produce un grafico che mostra:
+- Come varia la probabilità di apnea nel tempo
+- I periodi effettivi di trattenuta del respiro
+- I momenti di movimento del paziente
+- Il segnale BCG sottostante

@@ -1,0 +1,87 @@
+SPIEGAZIONE DETTAGLIATA DEL CODICE DI ANALISI APNEA (DOWNSAMPLE.PY)
+
+1. IMPORTAZIONI
+- pandas: gestione dati tabulari
+- numpy: calcoli numerici
+- scipy.signal: elaborazione segnali (resample, find_peaks)
+- scipy.interpolate: interpolazione dati
+- matplotlib: visualizzazione
+
+2. FUNZIONI PRINCIPALI
+
+load_and_downsample():
+- Input: file CSV, frequenze originale e target
+- Carica i dati BCG (12 canali) ed ECG
+- Sottocampiona da 1000Hz a 100Hz
+- Output: segnali BCG ed ECG sottocampionati
+
+sigmoid():
+- Funzione di attivazione sigmoid: 1/(1+e^(-x))
+- Converte numeri reali in probabilità [0,1]
+
+discretize_probability():
+- Converte probabilità in 3 classi:
+  * 0: No apnea (< 0.4)
+  * 1: Media probabilità (0.4-0.8)
+  * 2: Alta probabilità (> 0.8)
+
+compute_apnea_probability():
+- Trova picchi R nell'ECG
+- Calcola intervalli RR e loro z-score
+- Converte z-score in probabilità con sigmoid
+- Interpola per avere probabilità continue
+- Output: probabilità di apnea nel tempo
+
+create_windowed_dataset():
+- Crea finestre di 30s con shift di 1s
+- Per ogni finestra:
+  * Estrae 12 canali BCG
+  * Calcola massimo probabilità nella finestra
+  * NOTA: Il massimo tende a non mostrare valori bassi anche se presenti 
+    nel segnale originale, perché prende il valore più alto in 30s
+  * Discretizza in 3 classi
+- Output: array X (finestre) e y (classi 0,1,2)
+
+save_dataset():
+- Salva in formato NPZ (compresso)
+- Crea CSV completo con:
+  * Dati BCG
+  * Classe numerica (0,1,2)
+  * Etichetta testuale
+  * Timestamp (in secondi)
+- Crea CSV di riepilogo
+
+plot_apnea_analysis():
+- Grafico superiore:
+  * Probabilità continua (rosso)
+  * Zone di apnea (giallo)
+  * Zone di movimento (blu)
+- Grafico inferiore:
+  * Linee continue per ogni classe
+  * Nero: No apnea
+  * Verde: Media probabilità
+  * Viola: Alta probabilità
+
+3. PARAMETRI IMPORTANTI
+- Frequenza originale: 1000 Hz
+- Frequenza target: 100 Hz
+- Dimensione finestra: 30 secondi
+- Shift finestra: 1 secondo
+- Soglie classificazione:
+  * < 0.4: No apnea
+  * 0.4-0.8: Media probabilità
+  * > 0.8: Alta probabilità
+
+4. OUTPUT
+- downsampled_windowed_dataset.npz: dati compressi
+- downsampled_windowed_dataset_complete.csv: dati con classi
+- downsampled_windowed_dataset_summary.csv: riepilogo classi
+- Grafico analisi con visualizzazione classi
+
+5. DIFFERENZE DALLA VERSIONE PRECEDENTE
+- Shift finestra ridotto da 5s a 1s
+- Maggior numero di finestre generate
+- Overlap maggiore tra finestre
+- Timestamp aggiornati per riflettere lo shift di 1s
+- Visualizzazione a linee continue invece di punti discreti
+- Nuove soglie di classificazione

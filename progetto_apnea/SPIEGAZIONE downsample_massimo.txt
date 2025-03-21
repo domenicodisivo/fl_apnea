@@ -1,0 +1,69 @@
+SPIEGAZIONE DETTAGLIATA DEL CODICE DI ANALISI APNEA (DOWNSAMPLE.PY)
+
+1. IMPORTAZIONI
+- pandas: gestione dati tabulari
+- numpy: calcoli numerici
+- scipy.signal: elaborazione segnali (resample, find_peaks)
+- scipy.interpolate: interpolazione dati
+- matplotlib: visualizzazione
+
+2. FUNZIONI PRINCIPALI
+
+load_and_downsample():
+- Input: file CSV, frequenze originale e target
+- Carica i dati BCG (12 canali) ed ECG
+- Sottocampiona da 1000Hz a 100Hz
+- Output: segnali BCG ed ECG sottocampionati
+
+sigmoid():
+- Funzione di attivazione sigmoid: 1/(1+e^(-x))
+- Converte numeri reali in probabilità [0,1]
+
+compute_apnea_probability():
+- Trova picchi R nell'ECG
+- Calcola intervalli RR e loro z-score
+- Converte z-score in probabilità con sigmoid
+- Interpola per avere probabilità continue
+- Output: probabilità di apnea nel tempo
+
+create_windowed_dataset():
+- Crea finestre di 30s con overlap di 5s
+- Per ogni finestra:
+  * Estrae 12 canali BCG
+  * Calcola il massimo della probabilità nella finestra
+- Output: array X (finestre) e y (massimi probabilità)
+
+save_dataset():
+- Salva in formato NPZ (compresso)
+- Crea CSV completo con tutti i dati
+- Crea CSV di riepilogo con massimi probabilità
+
+plot_apnea_analysis():
+- Grafico superiore:
+  * Probabilità di apnea continua (rosso)
+  * Zone di apnea note (giallo)
+  * Zone di movimento (blu)
+  * Etichette tipo apnea (inhalation/exhalation)
+- Grafico inferiore:
+  * Massimi di probabilità per finestra
+  * Stesse zone evidenziate
+
+3. PARAMETRI IMPORTANTI
+- Frequenza originale: 1000 Hz
+- Frequenza target: 100 Hz
+- Dimensione finestra: 30 secondi
+- Passo tra finestre: 5 secondi
+- Periodi apnea: 9 intervalli di 30s
+- Periodo movimento: 420-480s
+
+4. OUTPUT
+- downsampled_windowed_dataset.npz: dati compressi
+- downsampled_windowed_dataset_complete.csv: tutti i dati con massimi
+- downsampled_windowed_dataset_summary.csv: riepilogo massimi
+- Grafico analisi apnea a due pannelli
+
+5. DIFFERENZE DALLA VERSIONE PRECEDENTE
+- Usa massimo invece dell'area sottesa
+- Indici y rappresentano picchi di probabilità
+- Etichette modificate per riflettere i massimi
+- CSV contiene 'apnea_max_prob' invece di 'apnea_index'

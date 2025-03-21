@@ -1,0 +1,81 @@
+RIEPILOGO ANALISI APNEA
+
+1. ANALISI PRELIMINARE (apnea_analysis6.py)
+- Analisi del segnale ECG e BCG durante periodi controllati di apnea
+- Identificazione di 9 periodi di trattenimento del respiro di 30 secondi ciascuno:
+  * 2 durante inspirazione (60-90s, 120-150s)
+  * 3 durante espirazione (180-210s, 240-270s, 300-330s)
+  * 2 durante inspirazione (480-510s, 540-570s)
+  * 2 durante espirazione (600-630s, 660-690s)
+- Periodo di movimento (420-480s): rotazione su un fianco
+- Calcolo probabilità di apnea basata su:
+  * Intervalli RR dell'ECG
+  * Variabilità della frequenza cardiaca
+  * Normalizzazione tramite funzione sigmoid
+
+2. PREPROCESSING DATI (downsample.py)
+- Sottocampionamento dei segnali:
+  * Riduzione frequenza da 1000 Hz a 100 Hz
+  * Elaborazione a batch (50000 campioni) per gestione memoria
+  * Mantenimento precisione con float32
+  * Ricampionamento segnali BCG (12 canali) e ECG
+
+- Calcolo probabilità apnea:
+  * Rilevamento picchi R nell'ECG
+  * Analisi intervalli RR
+  * Normalizzazione con z-score e sigmoid
+  * Interpolazione per continuità temporale
+
+- Creazione dataset etichettato:
+  * Finestre di 30 secondi con overlap 1 secondo
+  * Matrice input: (n_finestre, 12 canali, 3000 campioni)
+  * Classificazione in 3 livelli:
+    - 0: No Apnea (prob < 0.4)
+    - 1: Media Probabilità (0.4 ≤ prob < 0.7)
+    - 2: Alta Probabilità (prob ≥ 0.7)
+
+- Visualizzazione risultati:
+  * Grafico probabilità nel tempo
+  * Scatter plot classificazioni
+  * Distribuzione temporale delle classi
+
+3. ADDESTRAMENTO RETE NEURALE (train_cnn_teacher.py)
+- Creazione rete CNN per classificazione apnea
+- Utilizzo ECG come "teacher" per addestrare la rete sui segnali BCG
+- Architettura della rete:
+  * Layer convolutivi per estrazione features
+  * Batch normalization per stabilità
+  * Dropout per regolarizzazione
+- Classificazione in 3 categorie:
+  * No Apnea
+  * Media Probabilità
+  * Alta Probabilità
+
+4. PREDIZIONE (predict_apnea.py)
+- Applicazione del modello addestrato su nuovi dati BCG
+- Preprocessing:
+  * Finestre di 30 secondi
+  * Overlap di 1 secondo
+  * 12 canali BCG
+- Output:
+  * Probabilità per ogni classe
+  * Confidenza della predizione
+  * Visualizzazione risultati:
+    - Andamento temporale probabilità
+    - Scatter plot classificazioni
+    - Distribuzione classi
+    - Statistiche dettagliate
+
+FLUSSO COMPLESSIVO:
+1. Acquisizione e analisi dati grezzi (apnea_analysis6)
+2. Preprocessing e preparazione dataset (downsample)
+3. Addestramento modello con supervisione ECG (train_cnn_teacher)
+4. Predizione apnea da solo BCG (predict_apnea)
+
+OBIETTIVO FINALE:
+Sviluppo di un sistema di rilevamento apnea basato su BCG che:
+1. Utilizza solo sensori non invasivi (BCG)
+2. Sfrutta l'ECG come riferimento durante l'addestramento
+3. Opera in tempo reale su finestre di 30 secondi
+4. Fornisce classificazione multilivello dell'apnea
+5. Visualizza risultati in modo chiaro e interpretabile

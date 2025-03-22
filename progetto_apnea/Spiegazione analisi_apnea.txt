@@ -82,7 +82,7 @@ percorso_file = os.path.join(get_raw_data_path(), "ecg_bcg1_indexed_clean3.csv")
 
 ---
 
-### ✅ Considerazioni progettuali:
+considerazioni:
 - Si usa **solo il segnale ECG** per stimare l'apnea, rendendo il modello generalizzabile anche se non sono disponibili i segnali BCG
 - L'interpolazione lineare delle probabilità permette di ottenere una curva continua
 - Le soglie di apnea sono codificate manualmente secondo lo schema sperimentale

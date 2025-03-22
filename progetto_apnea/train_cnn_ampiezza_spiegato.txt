@@ -133,7 +133,7 @@ Salva tutto in `training_history.png`.
 
 ---
 
-### ✅ Vantaggi di questo approccio
+Vantaggi di questo approccio
 
 - Modello addestrato su BCG+etichette da ECG, ma pronto per transfer learning
 - Early stopping evita overfitting

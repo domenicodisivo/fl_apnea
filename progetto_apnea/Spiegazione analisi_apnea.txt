@@ -1,0 +1,93 @@
+### Spiegazione passo passo dello script di analisi della probabilità di apnea da ECG
+
+Questo script ha l'obiettivo di:
+1. Caricare un file CSV con segnali BCG ed ECG
+2. Calcolare la probabilità di apnea basandosi solo sul segnale ECG
+3. Creare maschere temporali per apnea e movimento
+4. Visualizzare un grafico finale con tutte queste informazioni sovrapposte
+
+---
+
+#### 1. **Import delle librerie**
+> Carica tutte le librerie necessarie per:
+- Analisi dei segnali (scipy)
+- Manipolazione dati (pandas, numpy)
+- Interpolazione e visualizzazione (matplotlib)
+- Accesso ai percorsi del progetto (funzioni `get_raw_data_path()` e `get_figures_path()` dal modulo `config`)
+
+---
+
+#### 2. **Funzione `carica_dati()`**
+```python
+def carica_dati(percorso_file):
+```
+> Legge un file CSV e:
+- estrae i 12 canali BCG (`dati.iloc[:, 1:13]`)
+- estrae il segnale ECG (ultima colonna)
+
+---
+
+#### 3. **Funzione `funzione_sigmoide()`**
+> Applica la funzione sigmoide:
+```python
+1 / (1 + np.exp(-x))
+```
+per trasformare uno z-score in una probabilità compresa tra 0 e 1.
+
+---
+
+#### 4. **Funzione `calcola_probabilita_apnea()`**
+> Questa è la funzione più importante:
+- Trova i picchi nel segnale ECG con `find_peaks`
+- Calcola gli intervalli RR (differenze tra picchi)
+- Calcola z-score degli RR rispetto alla media e deviazione standard
+- Applica la sigmoide per ottenere la probabilità associata a ciascun intervallo
+- Interpola la probabilità su tutto il segnale per renderla continua nel tempo
+
+Risultato: un array di probabilità apnea per ogni campione del segnale.
+
+---
+
+#### 5. **Funzione `crea_maschere_eventi()`**
+> Crea due maschere temporali booleane:
+- `maschera_apnea`: intervalli noti di apnea (in secondi)
+- `maschera_movimento`: periodo in cui il soggetto si gira
+
+Serve per evidenziare sul grafico i periodi controllati da protocollo.
+
+---
+
+#### 6. **Funzione `visualizza_analisi()`**
+> Crea un grafico combinato che mostra:
+- Segnale BCG normalizzato (solo il primo canale)
+- Curva della probabilità di apnea
+- Evidenziazione in giallo dei periodi di apnea
+- Evidenziazione in blu dei periodi di movimento
+
+Infine, salva il grafico in `analisi_apnea.png` nella cartella delle figure.
+
+---
+
+#### 7. **Funzione `main()`**
+> Esegue tutto il flusso:
+- Carica i dati dal CSV
+- Calcola la probabilità di apnea dal segnale ECG
+- Crea le maschere temporali
+- Mostra e salva il grafico
+
+Il nome del file CSV è ottenuto tramite:
+```python
+percorso_file = os.path.join(get_raw_data_path(), "ecg_bcg1_indexed_clean3.csv")
+```
+
+---
+
+### ✅ Considerazioni progettuali:
+- Si usa **solo il segnale ECG** per stimare l'apnea, rendendo il modello generalizzabile anche se non sono disponibili i segnali BCG
+- L'interpolazione lineare delle probabilità permette di ottenere una curva continua
+- Le soglie di apnea sono codificate manualmente secondo lo schema sperimentale
+- Il grafico finale è utile per validazione visuale e presentazioni
+
+---
+
+Questo script è molto utile per creare etichette semi-automatiche basate su RR da ECG e confrontarle con gli eventi noti registrati durante il test.

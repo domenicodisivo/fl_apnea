@@ -1,0 +1,111 @@
+### Spiegazione passo passo dello script di analisi e calcolo ampiezze della probabilità di apnea
+
+Questo script ha l'obiettivo di:
+1. Calcolare la probabilità di apnea dal segnale ECG
+2. Applicare un filtro passa-basso per rimuovere il rumore
+3. Suddividere il segnale in finestre e calcolare l'ampiezza della probabilità in ciascuna finestra
+4. Visualizzare e salvare i risultati per uso successivo (es. training di modelli)
+
+---
+
+#### 1. **Filtraggio passa-basso**
+```python
+def butter_lowpass(cutoff, fs, order=4):
+```
+> Definisce un filtro di Butterworth passa-basso con:
+- `cutoff` = frequenza di taglio (0.1 Hz)
+- `fs` = frequenza di campionamento (1000 Hz)
+
+Motivazione: il filtro riduce il rumore ad alta frequenza nella curva di probabilità.
+
+```python
+def apply_lowpass_filter(data, cutoff, fs, order=4):
+```
+> Applica il filtro al segnale e normalizza l'output tra 0 e 1.
+
+---
+
+#### 2. **Caricamento dei dati in chunk**
+```python
+def load_data(csv_file, chunk_size=50000):
+```
+> Legge il file CSV a blocchi per gestire file molto grandi. Estrae:
+- `bcg_data`: colonne da 1 a 12 (12 canali BCG)
+- `ecg_data`: ultima colonna (ECG)
+
+---
+
+#### 3. **Calcolo della probabilità di apnea dal segnale ECG**
+```python
+def compute_apnea_probability(ecg_signal, sampling_rate=1000):
+```
+> Passaggi principali:
+- Trova i picchi nel segnale ECG (ossia i battiti)
+- Calcola gli intervalli RR tra i picchi (in secondi)
+- Calcola lo z-score degli RR
+- Applica la funzione sigmoide agli z-score per ottenere una probabilità tra 0 e 1
+- Interpola questa probabilità su tutto il segnale ECG
+
+Motivazione: gli RR più irregolari indicano possibile apnea, trasformando lo z-score in una probabilità tramite sigmoide.
+
+---
+
+#### 4. **Calcolo delle ampiezze della probabilità filtrata**
+```python
+def compute_amplitudes(probabilities, window_size=30, step_size=1, sampling_rate=1000):
+```
+> Passaggi:
+- Applica un filtro passa-basso alla curva di probabilità
+- Divide il segnale in finestre sovrapposte da 30 secondi, con passo 1 secondo
+- Per ogni finestra calcola: `ampiezza = max - min` della probabilità
+
+Motivazione:
+- Le finestre da **30 secondi** corrispondono alla durata tipica di episodi di apnea secondo il protocollo sperimentale
+- Lo **shift di 1 secondo** consente una visione più continua e granulare nel tempo, generando più esempi per l'addestramento
+
+Questa scelta è particolarmente utile per l'addestramento con **reti neurali convoluzionali (CNN)** perché:
+- Ogni finestra può essere trattata come un esempio indipendente
+- L'alta sovrapposizione (finestra che scorre ogni secondo) aumenta il numero di esempi senza aumentare i dati raccolti
+- Permette al modello di imparare pattern locali e temporali ricorrenti all'interno della finestra
+
+---
+
+#### 5. **Visualizzazione dei risultati**
+```python
+def plot_analysis(probabilities, filtered_probabilities, amplitudes):
+```
+> Crea tre sottotrame:
+1. Probabilità originale (non filtrata)
+2. Probabilità filtrata
+3. Istogramma delle ampiezze, con soglie visive:
+   - 0.15: soglia per "no apnea"
+   - 0.35: soglia per "alta probabilità di apnea"
+
+Motivazione: utile per valutare visivamente se le soglie scelte sono coerenti con la distribuzione.
+
+---
+
+#### 6. **Blocco principale `__main__`**
+> Esegue l'intero flusso:
+- Carica i dati dal CSV specificato via `config`
+- Calcola la probabilità di apnea da ECG
+- Applica filtro e calcola ampiezze finestra per finestra
+- Visualizza i risultati
+- Salva tutto in un file `.npz` con: `bcg`, `ecg`, `amplitudes`, `filtered_probabilities`
+
+Infine stampa statistiche descrittive:
+- media, mediana, std delle ampiezze
+- distribuzione delle finestre in 3 classi (no apnea, media, alta)
+
+---
+
+Vantaggi di questo approccio:
+- Non servono etichette esterne: le probabilità sono ricavate da caratteristiche del segnale ECG
+- Le ampiezze diventano etichette surrogate per il training
+- Il filtro passa-basso migliora la stabilità del segnale di probabilità
+- Il sistema è ripetibile su qualsiasi segnale ECG standard con frequenza 1000Hz
+- Le finestre da 30 secondi con shift permettono di creare un dataset ampio ed equilibrato per CNN
+
+---
+
+Questo script è ideale per costruire dataset automatici e robusti da usare in modelli di classificazione o regressione, anche in assenza di annotazioni manuali.

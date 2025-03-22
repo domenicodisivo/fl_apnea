@@ -1,61 +1,49 @@
 import numpy as np
-import torch
+import tensorflow as tf
 import pandas as pd
-from train_cnn_teacher import ReteApneaCNN
 import matplotlib.pyplot as plt
 import os
-
-def preprocessa_bcg(bcg_data, window_size=30, step_size=1, sampling_rate=100):
-    """Prepara i dati BCG per la predizione"""
-    n_samples = len(bcg_data)
-    window_samples = window_size * sampling_rate
-    step_samples = step_size * sampling_rate
-    
-    n_windows = (n_samples - window_samples) // step_samples + 1
-    X = np.zeros((n_windows, 12, window_samples))
-    
-    for i in range(n_windows):
-        start_idx = i * step_samples
-        end_idx = start_idx + window_samples
-        X[i] = bcg_data[start_idx:end_idx].T
-    
-    return X
+from config import get_raw_data_path, get_models_path
 
 def predici_apnea(model_path, bcg_file):
     # Carica modello
-    model = ReteApneaCNN()
-    model.load_state_dict(torch.load(model_path))
-    model.eval()
+    model = tf.keras.models.load_model(model_path)
     
     # Carica e preprocessa BCG
     print(f"Caricamento dati BCG da {bcg_file}")
-    bcg_data = pd.read_csv(bcg_file).iloc[:, 1:13].values
-    X = preprocessa_bcg(bcg_data)
-    X = torch.FloatTensor(X)
+    bcg_data = pd.read_csv(bcg_file)
+    print(f"Dimensioni dati BCG: {bcg_data.shape}")
+    
+    # Prendi solo le colonne BCG (dalla 2 alla 13)
+    X = bcg_data.iloc[:, 1:13].values
+    
+    # Ridimensiona i dati nel formato corretto (batch, time_steps, channels)
+    X = X.reshape(1, X.shape[0], X.shape[1])
+    
+    # Normalizzazione
+    for i in range(12):
+        mean = np.mean(X[:,:,i])
+        std = np.std(X[:,:,i])
+        X[:,:,i] = (X[:,:,i] - mean) / std
     
     # Predizione
     print("Esecuzione predizioni...")
-    with torch.no_grad():
-        predictions = model(X)
-        probabilities = torch.softmax(predictions, dim=1)
-        classes = torch.argmax(predictions, dim=1)
+    predictions = model.predict(X)
+    probabilities = tf.nn.softmax(predictions).numpy()
+    classes = np.argmax(predictions, axis=1)
     
-    # Converti in etichette
-    etichette_classi = {
+    # Crea DataFrame con risultati
+    risultati = pd.DataFrame({
+        'classe': classes,
+        'prob_no_apnea': probabilities[0,0],
+        'prob_media': probabilities[0,1],
+        'prob_alta': probabilities[0,2]
+    }, index=[0])
+    
+    risultati['etichetta'] = risultati['classe'].map({
         0: "No Apnea",
         1: "Media Probabilità",
         2: "Alta Probabilità"
-    }
-    
-    # Crea DataFrame con risultati e timestamp
-    risultati = pd.DataFrame({
-        'tempo_secondi': np.arange(len(classes)),
-        'classe': classes.numpy(),
-        'etichetta': [etichette_classi[c.item()] for c in classes],
-        'confidenza': torch.max(probabilities, dim=1)[0].numpy(),
-        'prob_no_apnea': probabilities[:, 0].numpy(),
-        'prob_media': probabilities[:, 1].numpy(),
-        'prob_alta': probabilities[:, 2].numpy()
     })
     
     return risultati
@@ -131,17 +119,10 @@ def salva_risultati(risultati, output_file):
 if __name__ == "__main__":
     try:
         # Configurazione percorsi
-        base_path = "C:\\Windows\\System32\\progetto_apnea"
-        model_path = os.path.join(base_path, "best_model_bcg.pth")
-        bcg_file = os.path.join(base_path, "nuovo_bcg.csv")
-        output_file = os.path.join(base_path, "predizioni_apnea.csv")
+        model_path = os.path.join(get_models_path(), "bcg_apnea_model.h5")
+        bcg_file = os.path.join(get_raw_data_path(), "bcg_apnea_dataset.csv")
+        output_file = os.path.join(get_models_path(), "predizioni_apnea.csv")
         
-        # Verifica directory
-        if not os.path.exists(base_path):
-            print(f"Directory non trovata: {base_path}")
-            print("Assicurati che la directory esista e che tu abbia i permessi necessari")
-            exit(1)
-            
         # Verifica esistenza file
         if not os.path.exists(model_path):
             print(f"ATTENZIONE: Modello non trovato in {model_path}")
@@ -150,7 +131,7 @@ if __name__ == "__main__":
             
         if not os.path.exists(bcg_file):
             print(f"ATTENZIONE: File BCG non trovato in {bcg_file}")
-            print("Assicurati che il file dei dati BCG sia presente")
+            print("Assicurati che il file dei dati BCG sia presente nella cartella raw")
             exit(1)
             
         # Esegui predizioni

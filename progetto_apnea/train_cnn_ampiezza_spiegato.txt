@@ -1,0 +1,145 @@
+### Spiegazione passo passo dello script `train_cnn_ampiezza.py`
+
+Questo script implementa l'addestramento di una rete neurale convoluzionale (CNN) sui dati del segnale BCG, utilizzando le "ampiezze" delle variazioni della probabilità di apnea come etichette target.
+
+L'obiettivo è creare un modello che possa poi essere usato per predire la probabilità di apnea anche quando non è disponibile il segnale ECG (transfer learning).
+
+---
+
+#### 1. **Import delle librerie**
+
+```python
+import numpy as np
+import tensorflow as tf
+from tensorflow.keras import layers, models
+from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau, ModelCheckpoint
+from sklearn.model_selection import train_test_split
+import matplotlib.pyplot as plt
+import time
+import os
+from config import get_models_path
+```
+
+> Qui vengono caricate le librerie principali. In particolare:
+
+- `tensorflow.keras` per costruire e addestrare la rete
+- `sklearn` per suddividere i dati in training/test
+- `matplotlib` per visualizzare i risultati
+- `time` per misurare la durata dell'addestramento
+
+---
+
+#### 2. **Preparazione dei dati in finestre**
+
+```python
+def prepare_windows(bcg_data, amplitudes, window_size=30000, step_size=1000):
+```
+
+> Divide il segnale continuo BCG in finestre di 30.000 campioni (= 30 secondi a 1000Hz) con uno shift di 1.000 campioni (= 1 secondo).
+
+Ogni finestra è un input per la rete.
+
+---
+
+#### 3. **Preparazione delle etichette (amplitudes)**
+
+```python
+def prepare_labels(amplitudes):
+```
+
+> Assegna una classe (0, 1, 2) in base al valore dell'ampiezza:
+
+- 0: No Apnea (amplitude < 0.15)
+- 1: Probabilità media (0.15 <= amplitude < 0.35)
+- 2: Alta probabilità (amplitude >= 0.35)
+
+---
+
+#### 4. **Costruzione del modello CNN**
+
+```python
+def create_cnn_model(...):
+```
+
+> Architettura tipica 1D CNN:
+
+- 3 strati `Conv1D` con `ReLU` + `BatchNormalization`
+- `MaxPooling` per ridurre la dimensionalità
+- `GlobalAveragePooling` per ottenere un vettore fisso
+- `Dense` + `Dropout` + output a 3 classi (`softmax`)
+
+---
+
+#### 5. **Blocco principale**
+
+```python
+if __name__ == "__main__":
+```
+
+> Qui si esegue tutto:
+
+- **Caricamento dati** da `processed_data.npz`
+- **Normalizzazione**: i dati vengono scalati a media 0, dev std 1
+- **Train/test split**: 80/20
+- **Creazione modello CNN**
+
+---
+
+#### 6. **Addestramento del modello**
+
+```python
+history = model.fit(...)
+```
+
+> Parametri:
+
+- `epochs=100`: massimo 100 epoche
+- `EarlyStopping`: ferma se `val_loss` non migliora per 10 epoche
+- `ReduceLROnPlateau`: dimezza il learning rate se la `val_loss` si blocca
+- `ModelCheckpoint`: salva solo il miglior modello (più basso `val_loss`)
+
+---
+
+#### 7. **Cronometro addestramento**
+
+```python
+start_time = time.time() ... time.time() - start_time
+```
+
+> Calcola il tempo totale in secondi
+
+---
+
+#### 8. **Visualizzazione dell'andamento loss/accuracy**
+
+```python
+plt.plot(...)
+```
+
+> Crea due grafici:
+
+- loss (train vs validation)
+- accuracy (train vs validation)
+
+Salva tutto in `training_history.png`.
+
+---
+
+#### 9. **Output finale**
+
+- Miglior modello salvato in: `cnn_bcg_apnea_model_best.h5`
+- Grafico salvato in: `training_history.png`
+- Statistiche stampate a schermo
+
+---
+
+### ✅ Vantaggi di questo approccio
+
+- Modello addestrato su BCG+etichette da ECG, ma pronto per transfer learning
+- Early stopping evita overfitting
+- Checkpoint salva il modello migliore
+- Grafici aiutano a diagnosticare l'addestramento
+
+---
+
+Hai così un training completo, solido e pronto per essere usato nel deployment o in una pipeline di predizione.

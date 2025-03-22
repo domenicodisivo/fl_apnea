@@ -1,0 +1,79 @@
+import numpy as np
+import tensorflow as tf
+from tensorflow.keras import layers, models
+from sklearn.model_selection import train_test_split
+import os
+from config import get_models_path
+
+def prepare_windows(bcg_data, amplitudes, window_size=30000, step_size=1000):
+    n_windows = len(amplitudes)
+    X = np.zeros((n_windows, window_size, 12))
+    
+    for i in range(n_windows):
+        start_idx = i * step_size
+        end_idx = start_idx + window_size
+        X[i] = bcg_data[start_idx:end_idx]
+    
+    return X
+
+def prepare_labels(amplitudes):
+    y = np.zeros(len(amplitudes))
+    y[amplitudes >= 0.35] = 2
+    y[(amplitudes >= 0.15) & (amplitudes < 0.35)] = 1
+    return y
+
+def create_cnn_model(input_shape=(30000, 12), num_classes=3):
+    model = models.Sequential([
+        layers.Conv1D(32, 5, activation='relu', input_shape=input_shape),
+        layers.BatchNormalization(),
+        layers.MaxPooling1D(2),
+        layers.Conv1D(64, 5, activation='relu'),
+        layers.BatchNormalization(),
+        layers.MaxPooling1D(2),
+        layers.Conv1D(128, 5, activation='relu'),
+        layers.BatchNormalization(),
+        layers.GlobalAveragePooling1D(),
+        layers.Dense(64, activation='relu'),
+        layers.Dropout(0.5),
+        layers.Dense(num_classes, activation='softmax')
+    ])
+    model.compile(optimizer='adam',
+                  loss='sparse_categorical_crossentropy',
+                  metrics=['accuracy'])
+    return model
+
+if __name__ == "__main__":
+    print("Caricamento dati...")
+    data = np.load('processed_data.npz')
+    bcg_data = data['bcg']
+    amplitudes = data['amplitudes']
+
+    print("Preparazione dati...")
+    X = prepare_windows(bcg_data, amplitudes)
+    y = prepare_labels(amplitudes)
+
+    print("Normalizzazione...")
+    mean = np.mean(X, axis=(0, 1))
+    std = np.std(X, axis=(0, 1))
+    X = (X - mean) / (std + 1e-8)
+
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+    print("Creazione modello...")
+    model = create_cnn_model()
+
+    print("Addestramento...")
+    model.fit(
+        X_train, y_train,
+        validation_data=(X_test, y_test),
+        epochs=30,
+        batch_size=32,
+        callbacks=[
+            tf.keras.callbacks.EarlyStopping(patience=5, restore_best_weights=True),
+        ]
+    )
+
+    print("Salvataggio modello...")
+    model_path = os.path.join(get_models_path(), "cnn_bcg_apnea_model.h5")
+    model.save(model_path)
+    print(f"✅ Modello salvato in {model_path}")
